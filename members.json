@@ -140,7 +140,7 @@
     "photo": "images/members/Ganghyun_Kim.jpg",
     "display_order": 20,
     "research_interests": "Memory Test",
-    "private_detail_obfuscated": "v2.KGr-TG7rov6lbxe7zOGPFrpZ-EK9n6TL2L0LHSSHz-uhUlD7uSmT6iWNHI3DqIzHxQa4AkXoPbVF90WIqdlzjNq9TEtR"
+    "private_detail_obfuscated": "v2.KGr-TG7rov6lbxe7zOGPFrpZ-EK9n6TL2L0LHSSHz-uhUlD7uSmT6iWNHI3DqIzHxQa4EVjkaZNCshGqt5w-rd-6RgtFTLCccw"
   },
   {
     "id": "6268",
@@ -150,8 +150,8 @@
     "name_en": "Nayeun Kim",
     "photo": "images/members/Nayeun_Kim.png",
     "display_order": 12,
-    "research_interests": "BIRA",
-    "private_detail_obfuscated": "v2.Vk7ak73ELYUY8_xEhkBvbg0zITq7liegjg8P3TSsQU-UCn_1jmJnMrn2CYz7Rcs1ZDnFYNFPTbNeE7a6Hn2rAt8"
+    "research_interests": "Low Power Testing, Memory Test Compression",
+    "private_detail_obfuscated": "v2.Vk7ak73ELYUY8_xEhkBvbg0zITq7liegjg8P3TSsQU-UCn_1jmJnMrn2CZ37QMs5fnyY"
   },
   {
     "id": "6271",
@@ -162,7 +162,7 @@
     "photo": "images/members/Dayoung_Kim.jpg",
     "display_order": 13,
     "research_interests": "Chiplet DFT, 3D-IC test/repair",
-    "private_detail_obfuscated": "v2.V5L6TixK46-BiXHxx76UUC1P9_rj5qVn2qkrbIdtZUDn28771LQ09L9_Uvmx877WtupcviCou_YvNTWOq4kz"
+    "private_detail_obfuscated": "v2.V5L6TixK46-BiXHxx76UUC1P9_rj5qVn2qkrbIdtZUDn28771LQ09L9_Uvmx877WtupcviCou_YPNTWOq4kz"
   },
   {
     "id": "4984",
@@ -173,7 +173,7 @@
     "photo": "images/members/Sunghoon_Kim.jpg",
     "display_order": 3,
     "research_interests": "Scan Chain Diagnosis, 3D-IC Test",
-    "private_detail_obfuscated": "v2.a1_GmTj5Ds6MIuu3-MU3xvpMkbo4O1OtGwMRS-wUryfKblFZ-QerE5qskTIc8qs9kHpPtI9H80OdBr4lieWvAyz71VMyOGg"
+    "private_detail_obfuscated": "v2.a1_GmTj5Ds6MIuu3-MU3xvpMkbo4O1OtGwMRS-wUryfKblFZ-QerE5qskTIc8qs9kHpvtI9H80OdBr4lieWPAyz71VMyOGg"
   },
   {
     "id": "6376",
@@ -185,8 +185,8 @@
     "photo_scale": 1.1,
     "photo_offset_y": -2.5,
     "display_order": 16,
-    "research_interests": "Scan Chain Diagnosis",
-    "private_detail_obfuscated": "v2.piJwWGftvS05y5v5i8ngEid2uvNRCdTgSPztU9xTQXQVDzGviUHurw-1PmuGQA03BYauSsbkqFA1oD3vF_z2"
+    "research_interests": "Chiplet Interconnect Test & Repair",
+    "private_detail_obfuscated": "v2.piJwWGftvS05y5v5i8ngEid2uvNRCdTgSPztU9xTQXQVDzGviUHurw-nM3mMBUMHTbu8Q8_4qFAxvSfvCrmpwA"
   },
   {
     "id": "5891",
@@ -240,7 +240,7 @@
     "name_en": "Gyeonggyu Park",
     "photo": "images/members/Gyeonggyu_Park.jpg",
     "display_order": 17,
-    "research_interests": "SoC Design",
+    "research_interests": "Test Compression, PIM Test & Repair",
     "private_detail_obfuscated": "v2.cEDbXVQFpaWkRtmzPfaiJ4EaLQwc7gxrAMUY7KmYyt2AJ8jAOoIhw3hzK9lFre8g-7Lbh-ro9CR3gOsmBonXsLKeQQ"
   },
   {
@@ -273,8 +273,8 @@
     "name_en": "Seung Ho Shin",
     "photo": "images/members/Seung_Ho_Shin.jpg",
     "display_order": 5,
-    "research_interests": "Memory Test & Repair",
-    "private_detail_obfuscated": "v2.BPfuwIXz9XlcHG3TcJboFNkwsxtyHOm6iUzxW3cv2I2nC7rWI5Jz4wjdDobkKWi_w9BNn0c-MHpIu9tuCg"
+    "research_interests": "Memory & PIM Test/Repair, Error Detection and Correction",
+    "private_detail_obfuscated": "v2.BPfuwIXz9XlcHG3TcJboFNkwsxtyHOm6iUzxW3cv2I2nC7rWI5Jz4wjdDob2MHmuyNBQnUtTG35IqMEiEG2v"
   },
   {
     "id": "5889",
@@ -298,7 +298,7 @@
     "photo_offset_y": -2.5,
     "display_order": 4,
     "research_interests": "Built In Redundancy Analysis(BIRA)",
-    "private_detail_obfuscated": "v2.wE8jiqVMOuWeAbdbW7iSRF0LA_nIakc05AO_uv7sAYszWNb4ypRaUgD3pdUiGPaGgjjnutM"
+    "private_detail_obfuscated": "v2.wE8jiqVMOuWeAbdbW7iSRF0LA_nIakc05AO_uv7sAYszWNb4ypRaUgD3pdUgAfmRgjjnuOmek5cLqln9"
   },
   {
     "id": "6276",
@@ -319,7 +319,7 @@
     "name_en": "Hyojun Yun",
     "photo": "images/members/Hyojun_Yun.jpg",
     "display_order": 1,
-    "research_interests": "Scan Chain Diagnosis",
+    "research_interests": "Scan Chain Diagnosis, Aging Monitoring",
     "private_detail_obfuscated": "v2.xfEusXyT9JSm4PDsgtWRTtI1HuNNmRJyBZCo6DwtBFMFLe0W22k-39LTsMgECAjQFeyJfI36KUp9F5D3shA"
   },
   {
@@ -363,7 +363,7 @@
     "name_en": "Sumin Yim",
     "photo": "images/members/Sumin_Yim.jpg",
     "display_order": 19,
-    "research_interests": "TSV test & repair",
+    "research_interests": "Memory Repair",
     "private_detail_obfuscated": "v2.RceF3prdCXxqxYLq7fwchpG-KKhctvC6mPDJkay19IvHpyxOiSMerVLDT9PdjXhKxCBtH1ZSvCA"
   },
   {
@@ -385,7 +385,7 @@
     "name_en": "Dahoon Kim",
     "photo": "images/members/Dahoon_Kim.jpg",
     "display_order": 15,
-    "research_interests": "Test vector compression",
+    "research_interests": "SoC DFT, Test Point Insertion",
     "private_detail_obfuscated": "v2.riZmZ2nCvFtiUrO3URNVrirrpQW5OP5Bp615EXA8cO01w1KW7lPP2t7TEJ7SskPDO875b1IFgpU6qLwOd7GhlJ8"
   },
   {
@@ -396,7 +396,7 @@
     "name_en": "Junger Kim",
     "photo": "images/members/Junger_Kim.jpg",
     "display_order": 5,
-    "research_interests": "Test vector compression",
+    "research_interests": "Aging Monitoring",
     "private_detail_obfuscated": "v2.Nl5DKTxMLbRDH-vdzbslGebNYjAzYVCyFvb-p11r7xHht0-vWTfSD64N8iJMtgQq9gaODDhBTtijb9Pfxlk"
   },
   {
@@ -429,7 +429,7 @@
     "name_en": "Hoyeon We",
     "photo": "images/members/Hoyeon_We.jpg",
     "display_order": 4,
-    "research_interests": "Test vector compression",
+    "research_interests": "SoC Design & Test",
     "private_detail_obfuscated": "v2.P5c0nM7UqM4tIZqvrWxASPJkrRVG7ySp5LODZyLNR3CYWCwBqADHfFTZhoAvtqnyr9KstifNLZAHouShyg"
   },
   {
@@ -451,7 +451,7 @@
     "name_en": "Junhee Cho",
     "photo": "images/members/Junhee_Cho.jpg",
     "display_order": 6,
-    "research_interests": "Test vector compression",
+    "research_interests": "Chiplet Interconnect Test & Repair",
     "private_detail_obfuscated": "v2.zlHnmM3DLB7h8AW_zbQm0gta4qxH8m9aEUXo2sy8E5ZXDurNp1nZutiam5ONLZ8rDAUmv2HubO8"
   },
   {
@@ -462,7 +462,7 @@
     "name_en": "Yeonho Choi",
     "photo": "images/members/Yeonho_Choi.jpg",
     "display_order": 2,
-    "research_interests": "Test vector compression",
+    "research_interests": "Test Vector Compression",
     "private_detail_obfuscated": "v2.ytW7Pk1AObr31DbAP3MvojJyx5t3eaKdj-ezces7_ZPZPVvAbZaiDQhQK5PsaIn5bakV3wqP3l-JwLGRReXAtKBdhBb_MgJY"
   },
   {
@@ -474,7 +474,7 @@
     "photo": "images/members/Ina_Gwon.jpg",
     "photo_scale": 1.07,
     "display_order": 8,
-    "research_interests": "SoC Design & Test",
+    "research_interests": "SRAM BIRA",
     "private_detail_obfuscated": "v2.uHIvMkljglf1BQvsY-6N43UgpRojFa7huclHFApvFEynhzYAe2fUaZ43JIObNhsyzu7ZSGJOiQm4Qn4"
   },
   {
@@ -496,7 +496,7 @@
     "name_en": "Jaewoo Shin",
     "photo": "images/members/Jaewoo_Shin.jpg",
     "display_order": 7,
-    "research_interests": "SoC Design & Test",
+    "research_interests": "Aging Monitoring",
     "private_detail_obfuscated": "v2.WzALkxf2j9mgH3yMWbm-N2kaGfJJELTjhnvtYzYpoL63pr9bvxZXkrA2CfDeZDNEaTDpVDh3KNlVAPipNY7RvQ_qBM3u6x8"
   },
   {
