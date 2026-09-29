@@ -938,6 +938,37 @@ function compareAlumniByGraduation(first, second) {
   );
 }
 
+function getAlumniThesisLabels(member) {
+  if (member.category === "박사") {
+    return { kr: "박사논문", en: "Dissertation" };
+  }
+
+  if (member.category === "석사") {
+    return { kr: "석사논문", en: "Thesis" };
+  }
+
+  return { kr: "학위논문", en: "Thesis" };
+}
+
+function createAlumniThesisField(member) {
+  const labels = getAlumniThesisLabels(member);
+  const field = createProfileField(labels.kr, labels.en, member.thesis);
+
+  if (!field) {
+    return null;
+  }
+
+  const graduationValue = String(member.graduation || "").trim();
+  if (graduationValue) {
+    const graduation = document.createElement("strong");
+    graduation.className = "alumni-detail-graduation";
+    graduation.textContent = "(" + graduationValue + ")";
+    field.querySelector("dd")?.append(" ", graduation);
+  }
+
+  return field;
+}
+
 function getObfuscationSeed(member, version) {
   if (version === "v2") {
     return [
@@ -1031,7 +1062,7 @@ function populateAlumniDetail(detail, member) {
       "",
       affiliationValue
     ),
-    createProfileField("학위논문", "Thesis", member.thesis),
+    createAlumniThesisField(member),
     createProfileField("메일", "Email", privateDetail.email, "mailto:"),
     createProfileField("취미", "Hobby", privateDetail.hobby),
   ].filter(Boolean).forEach((field) => fields.append(field));
@@ -1082,6 +1113,18 @@ function createAlumniElements(member, index) {
 
   const name = createCurrentMemberName(member, "alumni-card-name");
   button.append(name);
+
+  const graduationValue = String(member.graduation || "").trim();
+  if (graduationValue) {
+    const graduation = document.createElement("span");
+    graduation.className = "alumni-card-graduation";
+    setLocalizedContent(
+      graduation,
+      "졸업 " + graduationValue,
+      "Graduated " + graduationValue
+    );
+    button.append(graduation);
+  }
 
   const affiliationValue = String(member.work || "").trim();
   const affiliation = document.createElement("span");

@@ -2577,6 +2577,15 @@ html[lang="en"] .alumni-card-name .member-name-english{
   font-size:14px;
 }
 
+.alumni-card-graduation{
+  display:block;
+  margin-top:8px;
+  color:var(--ink-soft);
+  font-size:12px;
+  font-variant-numeric:tabular-nums;
+  line-height:1.4;
+}
+
 .alumni-card-affiliation{
   display:block;
   margin-top:12px;
@@ -2585,6 +2594,15 @@ html[lang="en"] .alumni-card-name .member-name-english{
   font-size:12px;
   line-height:1.55;
   overflow-wrap:anywhere;
+}
+
+.alumni-card-graduation + .alumni-card-affiliation{
+  margin-top:6px;
+}
+
+.alumni-detail-graduation{
+  white-space:nowrap;
+  font-weight:700;
 }
 
 .alumni-detail-panel{
