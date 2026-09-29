@@ -940,14 +940,14 @@ function compareAlumniByGraduation(first, second) {
 
 function getAlumniThesisLabels(member) {
   if (member.category === "박사") {
-    return { kr: "박사논문", en: "Dissertation" };
+    return { kr: "Dissertation", en: "Dissertation" };
   }
 
   if (member.category === "석사") {
-    return { kr: "석사논문", en: "Thesis" };
+    return { kr: "Thesis", en: "Thesis" };
   }
 
-  return { kr: "학위논문", en: "Thesis" };
+  return { kr: "Thesis", en: "Thesis" };
 }
 
 function createAlumniThesisField(member) {
