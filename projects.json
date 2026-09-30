@@ -467,8 +467,8 @@
   "title_kr": "메모리 BIST 연구",
   "start": "2006.03.01",
   "end": "2007.02.28",
-  "agency_kr": "하이닉스",
-  "agency_en": "SK hynix",
+  "agency_kr": "하이닉스반도체",
+  "agency_en": "Hynix Semiconductor",
   "source": "old_site"
  },
  {
@@ -583,8 +583,8 @@
   "title_kr": "메모리 BIST 연구",
   "start": "2007.04.01",
   "end": "2008.03.31",
-  "agency_kr": "하이닉스",
-  "agency_en": "SK hynix",
+  "agency_kr": "하이닉스반도체",
+  "agency_en": "Hynix Semiconductor",
   "source": "old_site"
  },
  {
@@ -603,8 +603,8 @@
   "title_kr": "Built-in Self Test for Embedded Memories [2]",
   "start": "2007.04.01",
   "end": "2008.03.31",
-  "agency_kr": "하이닉스",
-  "agency_en": "SK hynix",
+  "agency_kr": "하이닉스반도체",
+  "agency_en": "Hynix Semiconductor",
   "source": "old_site"
  },
  {
@@ -769,7 +769,8 @@
   "title_kr": "Built-in Self Test for Embedded Memories",
   "start": "2008.04.01",
   "end": "2010.03.31",
-  "agency_kr": "(주)하이닉스 반도체",
+  "agency_kr": "하이닉스반도체",
+  "agency_en": "Hynix Semiconductor",
   "source": "old_site"
  },
  {
@@ -838,7 +839,8 @@
   "title_kr": "플래시 메모리 기반의 파일 시스템의 안정성 향상을 위한 고장 분석",
   "start": "2009.10.01",
   "end": "2010.09.30",
-  "agency_kr": "(주)LG전자",
+  "agency_kr": "LG전자",
+  "agency_en": "LG Electronics",
   "source": "old_site"
  },
  {
@@ -865,7 +867,8 @@
   "title_kr": "Memory Logic Simulatio IDE(통합설계환경) 구축",
   "start": "2010.04.01",
   "end": "2011.03.31",
-  "agency_kr": "하이닉스반도체(주)",
+  "agency_kr": "하이닉스반도체",
+  "agency_en": "Hynix Semiconductor",
   "source": "old_site"
  },
  {
@@ -884,7 +887,7 @@
   "title_kr": "T-con의 테스트 coverage 측정을 위한 테스트 IP 개발",
   "start": "2010.08.01",
   "end": "2011.07.31",
-  "agency_kr": "삼성전자(주)",
+  "agency_kr": "삼성전자",
   "agency_en": "Samsung Electronics",
   "source": "old_site"
  },
@@ -914,7 +917,7 @@
   "title_kr": "Multicore 환경을 위한 DVS 기술 개발",
   "start": "2012.01.02",
   "end": "2013.12.31",
-  "agency_kr": "LG전자(주)",
+  "agency_kr": "LG전자",
   "agency_en": "LG Electronics",
   "source": "old_site"
  },
@@ -924,7 +927,7 @@
   "title_kr": "병렬비교 High speed I/O 테스트 기법 개발",
   "start": "2012.04.01",
   "end": "2014.03.31",
-  "agency_kr": "SK하이닉스(주)",
+  "agency_kr": "SK하이닉스",
   "agency_en": "SK hynix",
   "source": "old_site"
  },
@@ -934,7 +937,7 @@
   "title_kr": "차세대 선행설계(메모리&System LSI)",
   "start": "2012.04.01",
   "end": "2014.03.31",
-  "agency_kr": "SK하이닉스(주)",
+  "agency_kr": "SK하이닉스",
   "agency_en": "SK hynix",
   "source": "old_site"
  },
@@ -944,7 +947,7 @@
   "title_kr": "Massively Parallel Testing기법에 관한 연구",
   "start": "2010.07.01",
   "end": "2014.06.30",
-  "agency_kr": "삼성전자(주)",
+  "agency_kr": "삼성전자",
   "agency_en": "Samsung Electronics",
   "source": "old_site"
  },
@@ -964,7 +967,7 @@
   "title_kr": "Logic설계 code/function 검증 coverage 개선 방법 연구",
   "start": "2014.04.01",
   "end": "2015.03.31",
-  "agency_kr": "SK하이닉스(주)",
+  "agency_kr": "SK하이닉스",
   "agency_en": "SK hynix",
   "source": "old_site"
  },
@@ -984,7 +987,7 @@
   "title_kr": "Speed up scan shifting frequency using low power scan stitching method",
   "start": "2013.07.01",
   "end": "2015.06.30",
-  "agency_kr": "삼성전자(주)",
+  "agency_kr": "삼성전자",
   "agency_en": "Samsung Electronics",
   "source": "old_site"
  },
@@ -1004,7 +1007,7 @@
   "title_kr": "수율 향상을 위한 2D BIRA기술연구",
   "start": "2014.08.01",
   "end": "2016.07.31",
-  "agency_kr": "SK하이닉스(주)",
+  "agency_kr": "SK하이닉스",
   "agency_en": "SK hynix",
   "source": "old_site"
  },
@@ -1014,7 +1017,7 @@
   "title_kr": "Test Parallelism 확대를 위한 SoC Self-Test Methodology 개발",
   "start": "2015.07.01",
   "end": "2017.06.30",
-  "agency_kr": "삼성전자(주)",
+  "agency_kr": "삼성전자",
   "agency_en": "Samsung Electronics",
   "source": "old_site"
  },
@@ -1045,7 +1048,7 @@
   "title_kr": "64-bit ARM 기반 FIM 시스템의 구현 및 시제품 제작",
   "start": "2017.04.10",
   "end": "2020.03.31",
-  "agency_kr": "삼성전자㈜",
+  "agency_kr": "삼성전자",
   "agency_en": "Samsung Electronics",
   "source": "professor_list_202607"
  },
@@ -1075,7 +1078,7 @@
   "title_kr": "수율 향상을 위한 DFT 구조 설계",
   "start": "2018.07.01",
   "end": "2020.06.30",
-  "agency_kr": "삼성전자㈜",
+  "agency_kr": "삼성전자",
   "agency_en": "Samsung Electronics",
   "source": "professor_list_202607"
  },
@@ -1085,7 +1088,7 @@
   "title_kr": "Statistical DRAM fault 모델링과 이에 기반한 fault 생성 기술 개발",
   "start": "2018.08.01",
   "end": "2020.07.31",
-  "agency_kr": "SK하이닉스㈜",
+  "agency_kr": "SK하이닉스",
   "agency_en": "SK hynix",
   "source": "professor_list_202607"
  },
@@ -1105,7 +1108,7 @@
   "title_kr": "메모리향 RTL 기반 design을 위한 테스트 용이화 설계 (DFT) 방법론 최적화",
   "start": "2020.11.23",
   "end": "2021.11.22",
-  "agency_kr": "삼성전자㈜",
+  "agency_kr": "삼성전자",
   "agency_en": "Samsung Electronics",
   "source": "professor_list_202607"
  },
@@ -1135,7 +1138,7 @@
   "title_kr": "차세대 메모리 테스트기술",
   "start": "2020.12.01",
   "end": "2023.11.30",
-  "agency_kr": "SK하이닉스㈜",
+  "agency_kr": "SK하이닉스",
   "agency_en": "SK hynix",
   "source": "professor_list_202607"
  },
@@ -1185,7 +1188,7 @@
   "title_kr": "수율 향상을 위한 Layout-Aware Scan Chain Diagnosis",
   "start": "2020.09.16",
   "end": "2025.09.15",
-  "agency_kr": "삼성전자㈜",
+  "agency_kr": "삼성전자",
   "agency_en": "Samsung Electronics",
   "source": "professor_list_202607"
  },
@@ -1205,7 +1208,7 @@
   "title_kr": "High-Speed 테스트 장치를 위한 패턴 생성 및 기반기술 개발",
   "start": "2024.04.01",
   "end": "2026.03.31",
-  "agency_kr": "SK하이닉스㈜",
+  "agency_kr": "SK하이닉스",
   "agency_en": "SK hynix",
   "source": "professor_list_202607"
  },
