@@ -315,6 +315,32 @@ function normalizeNickname(value) {
   return value.replace(/\s+/g, " ").trim();
 }
 
+function getLeaderboardNicknameKey(value) {
+  return normalizeNickname(String(value || ""))
+    .normalize("NFKC")
+    .toLocaleLowerCase("ko-KR");
+}
+
+function getBestScoresByNickname(records) {
+  const bestScores = new Map();
+
+  records.forEach((record) => {
+    const nicknameKey = getLeaderboardNicknameKey(record.nickname);
+    if (!nicknameKey) {
+      return;
+    }
+
+    const currentBest = bestScores.get(nicknameKey);
+    if (!currentBest || record.elapsedMs < currentBest.elapsedMs) {
+      bestScores.set(nicknameKey, record);
+    }
+  });
+
+  return Array.from(bestScores.values())
+    .sort((first, second) => first.elapsedMs - second.elapsedMs)
+    .slice(0, 10);
+}
+
 function rememberNickname(nickname) {
   try {
     window.localStorage.setItem("soclabFaultFinderNickname", nickname);
@@ -701,14 +727,14 @@ async function subscribeLeaderboard(difficulty) {
       difficulty,
       "scores"
     );
-    const topTenQuery = services.firestoreModule.query(
+    const leaderboardQuery = services.firestoreModule.query(
       scores,
       services.firestoreModule.orderBy("elapsedMs", "asc"),
-      services.firestoreModule.limit(10)
+      services.firestoreModule.limit(100)
     );
 
     leaderboardUnsubscribe = services.firestoreModule.onSnapshot(
-      topTenQuery,
+      leaderboardQuery,
       (snapshot) => {
         if (requestId !== leaderboardRequestId) {
           return;
@@ -720,10 +746,11 @@ async function subscribeLeaderboard(difficulty) {
             && Number.isFinite(record.elapsedMs)
             && record.elapsedMs >= 0
           ));
-        renderLeaderboard(records);
+        const bestScores = getBestScoresByNickname(records);
+        renderLeaderboard(bestScores);
         setLeaderboardStatus(
-          records.length
-            ? "현재 " + records.length + "개의 상위 기록입니다."
+          bestScores.length
+            ? "현재 " + bestScores.length + "명의 최고 기록입니다."
             : "아직 등록된 기록이 없습니다."
         );
       },
