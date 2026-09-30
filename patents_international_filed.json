@@ -1,5 +1,21 @@
 [
  {
+  "id": 47,
+  "type": "patent",
+  "scope": "international",
+  "status": "filed",
+  "title": "PROCESSING-IN-MEMORY DEVICE INCLUDING A SELF-TESTING AND SELF-REPAIRING ADDER-TREE-BASED MULTIPLY-ACCUMULATE ENGINE AND METHOD OF OPERATING THE SAME",
+  "inventors": [
+   "강성호",
+   "신승호"
+  ],
+  "date": "2026.09.11",
+  "year": 2026,
+  "number": "19/805,354",
+  "country": "미국",
+  "note": ""
+ },
+ {
   "id": 46,
   "type": "patent",
   "scope": "international",

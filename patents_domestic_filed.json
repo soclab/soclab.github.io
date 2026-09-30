@@ -1,5 +1,53 @@
 [
  {
+  "id": 199,
+  "type": "patent",
+  "scope": "domestic",
+  "status": "filed",
+  "title": "회로 구조적 동치성 기반 노화 모니터링 센서 배치 장치 및 그 동작 방법",
+  "inventors": [
+   "강성호",
+   "김준거"
+  ],
+  "date": "2026.09.16",
+  "year": 2026,
+  "number": "10-2026-0177023",
+  "country": "대한민국",
+  "note": ""
+ },
+ {
+  "id": 198,
+  "type": "patent",
+  "scope": "domestic",
+  "status": "filed",
+  "title": "데이터 라인 기반 통합 스캔 구조를 이용한 다중 고장 진단 및 전역 플립플롭 모니터링 장치 및 그 동작 방법",
+  "inventors": [
+   "강성호",
+   "윤효준"
+  ],
+  "date": "2026.09.11",
+  "year": 2026,
+  "number": "10-2026-0173779",
+  "country": "대한민국",
+  "note": ""
+ },
+ {
+  "id": 197,
+  "type": "patent",
+  "scope": "domestic",
+  "status": "filed",
+  "title": "반복 고장 검출 이력 및 불일치 점수 기반 메모리 테스트 장비 예지보전 장치 및 그 동작 방법",
+  "inventors": [
+   "강성호",
+   "정유진"
+  ],
+  "date": "2026.09.09",
+  "year": 2026,
+  "number": "10-2026-0171601",
+  "country": "대한민국",
+  "note": ""
+ },
+ {
   "id": 196,
   "type": "patent",
   "scope": "domestic",

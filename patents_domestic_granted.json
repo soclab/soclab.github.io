@@ -1,5 +1,50 @@
 [
  {
+  "id": 141,
+  "type": "patent",
+  "scope": "domestic",
+  "status": "granted",
+  "title": "수리 가능성 기반 메모리 고장 정보 전송 장치 및 방법",
+  "inventors": [
+   "강성호",
+   "이하영"
+  ],
+  "number": "10-3017754",
+  "date": "2026.09.07",
+  "year": 2026,
+  "note": ""
+ },
+ {
+  "id": 140,
+  "type": "patent",
+  "scope": "domestic",
+  "status": "granted",
+  "title": "다이 래퍼 레지스터 구조",
+  "inventors": [
+   "강성호",
+   "김성훈"
+  ],
+  "number": "10-3014448",
+  "date": "2026.08.31",
+  "year": 2026,
+  "note": ""
+ },
+ {
+  "id": 139,
+  "type": "patent",
+  "scope": "domestic",
+  "status": "granted",
+  "title": "로직 비스트 장치 및 그 동작 방법",
+  "inventors": [
+   "강성호",
+   "조한성"
+  ],
+  "number": "10-3013659",
+  "date": "2026.08.28",
+  "year": 2026,
+  "note": ""
+ },
+ {
   "id": 138,
   "type": "patent",
   "scope": "domestic",
