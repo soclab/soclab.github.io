@@ -5,20 +5,21 @@
     "status": "accepted",
     "year": 2026,
     "month": null,
-    "title": "Subarray-Based Victim-Centric Per-Row Counting",
+    "title": "A Unified Delay-Based Chiplet Interconnect Test Architecture Supporting Post-Bond Testing and Runtime Monitoring",
     "authors": [
-      "Hwayoung Jeong",
-      "Juyong Lee",
-      "Hayoung Lee",
+      "Dayoung Kim",
+      "Sooryeong Lee",
+      "Seungtae Kim",
+      "Sung Kyu Lim",
       "Sungho Kang"
     ],
-    "journal": "IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems",
+    "journal": "IEEE Transactions on Very Large Scale Integration Systems",
     "volume": "",
     "issue": "",
     "pages": "",
     "date": "",
-    "url": "https://doi.org/10.1109/tcad.2026.3694342",
-    "doi": "10.1109/tcad.2026.3694342"
+    "url": "",
+    "doi": ""
   },
   {
     "id": 236,
