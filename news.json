@@ -6754,5 +6754,22 @@
   "auto_generated": true,
   "source_key": "patent:domestic:141:granted",
   "id": 1266
+ },
+ {
+  "board": "research",
+  "category": "publication",
+  "date": "2026-10-06",
+  "title": "2026 IEEE TVLSI Acceptance - Dayoung Kim, etc.",
+  "body": "The following paper has been accepted in the IEEE Transactions on Very Large Scale Integration Systems in October 2026.\nCongratulations to the authors.\n\nTitle: A Unified Delay-Based Chiplet Interconnect Test Architecture Supporting Post-Bond Testing and Runtime Monitoring\nAuthors: Dayoung Kim, Sooryeong Lee, Seungtae Kim, Sung Kyu Lim, and Sungho Kang",
+  "body_html": "The following paper has been accepted in the IEEE Transactions on Very Large Scale Integration Systems in October 2026.\nCongratulations to the authors.\n\nTitle: A Unified Delay-Based Chiplet Interconnect Test Architecture Supporting Post-Bond Testing and Runtime Monitoring\nAuthors: Dayoung Kim, Sooryeong Lee, Seungtae Kim, Sung Kyu Lim, and Sungho Kang",
+  "images": [],
+  "views": 0,
+  "pinned": false,
+  "paper_title": "A Unified Delay-Based Chiplet Interconnect Test Architecture Supporting Post-Bond Testing and Runtime Monitoring",
+  "authors": "Dayoung Kim, Sooryeong Lee, Seungtae Kim, Sung Kyu Lim, and Sungho Kang",
+  "attachments": [],
+  "auto_generated": true,
+  "source_key": "publication:237:acceptance",
+  "id": 1267
  }
 ]
