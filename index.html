@@ -57,7 +57,7 @@
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20260909-1">
+<link rel="stylesheet" href="style.css?v=20261009-1">
 </head>
 <body>
 
@@ -97,7 +97,7 @@
               <li><a href="#about" data-kr="연구실 소개" data-en="About">연구실 소개</a></li>
               <li><a href="#research" data-kr="연구 분야" data-en="Research Areas">연구 분야</a></li>
               <li><a href="#contact" data-kr="오시는 길" data-en="Location">오시는 길</a></li>
-              <li><a href="#" class="is-placeholder" aria-disabled="true" data-page="links.html" data-kr="관련 사이트" data-en="Related Sites">관련 사이트</a></li>
+              <li><a href="#partners" data-kr="관련 사이트" data-en="Related Sites">관련 사이트</a></li>
             </ul>
           </li>
 
@@ -325,7 +325,7 @@
 <!-- ================= 소속 및 협력 기관 =================
      로고를 추가하려면 li 하나 복사해서 images/partners/에 올린 파일을 가리키면 됩니다.
 -->
-<section class="partners" aria-label="소속 및 협력 기관">
+<section id="partners" class="partners" aria-label="소속 및 협력 기관">
   <div class="wrap">
     <ul class="partner-list">
       <li>
@@ -698,11 +698,30 @@
         <label class="sr-only" for="site-search-input" data-kr="검색어" data-en="Search query">검색어</label>
         <span class="site-search-icon" aria-hidden="true"></span>
         <input id="site-search-input" name="q" type="search" autocomplete="off"
-          placeholder="공지사항, 과제, 논문 등을 검색하세요"
-          data-placeholder-kr="공지사항, 과제, 논문 등을 검색하세요"
-          data-placeholder-en="Search notices, projects, papers, and more">
+          placeholder="이름, 공지사항, 과제, 논문 등을 검색하세요"
+          data-placeholder-kr="이름, 공지사항, 과제, 논문 등을 검색하세요"
+          data-placeholder-en="Search names, notices, projects, papers, and more">
         <button type="submit" data-kr="검색" data-en="Search">검색</button>
       </form>
+      <div class="site-search-controls">
+        <div class="site-search-filters" role="group" aria-label="검색 결과 필터"
+          data-aria-kr="검색 결과 필터" data-aria-en="Search result filters">
+          <button type="button" data-site-search-filter="all" aria-pressed="true" data-kr="전체" data-en="All">전체</button>
+          <button type="button" data-site-search-filter="research" aria-pressed="false" data-kr="연구업적" data-en="Research Outputs">연구업적</button>
+          <button type="button" data-site-search-filter="paper" aria-pressed="false" data-kr="논문" data-en="Papers">논문</button>
+          <button type="button" data-site-search-filter="patent" aria-pressed="false" data-kr="특허" data-en="Patents">특허</button>
+          <button type="button" data-site-search-filter="project" aria-pressed="false" data-kr="연구과제" data-en="Projects">연구과제</button>
+          <button type="button" data-site-search-filter="news" aria-pressed="false" data-kr="소식" data-en="News">소식</button>
+          <button type="button" data-site-search-filter="member" aria-pressed="false" data-kr="구성원" data-en="Members">구성원</button>
+        </div>
+        <label class="site-search-sort" for="site-search-sort">
+          <span data-kr="정렬" data-en="Sort">정렬</span>
+          <select id="site-search-sort">
+            <option value="relevance" data-kr="관련도순" data-en="Relevance">관련도순</option>
+            <option value="latest" data-kr="최신순" data-en="Newest">최신순</option>
+          </select>
+        </label>
+      </div>
       <p class="site-search-status" id="site-search-status" aria-live="polite"
         data-kr="검색 자료를 준비하는 중입니다." data-en="Preparing the search index.">검색 자료를 준비하는 중입니다.</p>
       <div class="site-search-results" id="site-search-results" aria-live="polite" hidden></div>
@@ -759,6 +778,6 @@
   </div>
 </footer>
   
-  <script src="script.js?v=20260909-2"></script>
+  <script src="script.js?v=20261009-1"></script>
 </body>
 </html>
