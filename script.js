@@ -3151,14 +3151,6 @@ function getSiteSearchGroups(config, record) {
     groups.add("research");
   } else if (config.kind === "news") {
     groups.add("news");
-    if (getNewsFilterCategory(record.category) === "achievement") {
-      groups.add("research");
-    }
-    if (record.category === "publication") {
-      groups.add("paper");
-    } else if (record.category === "patent") {
-      groups.add("patent");
-    }
   }
 
   return [...groups];
@@ -3427,7 +3419,7 @@ function initializeSiteSearch() {
   const input = document.getElementById("site-search-input");
   const status = document.getElementById("site-search-status");
   const filterButtons = [...document.querySelectorAll("[data-site-search-filter]")];
-  const sortSelect = document.getElementById("site-search-sort");
+  const sortButtons = [...document.querySelectorAll("[data-site-search-sort]")];
   if (!form || !input || !status) {
     return;
   }
@@ -3456,14 +3448,19 @@ function initializeSiteSearch() {
     });
   });
 
-  if (sortSelect) {
-    sortSelect.addEventListener("change", () => {
-      siteSearchState.sort = sortSelect.value === "latest" ? "latest" : "relevance";
+  sortButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      siteSearchState.sort = button.dataset.siteSearchSort === "latest"
+        ? "latest"
+        : "relevance";
+      sortButtons.forEach((candidate) => {
+        candidate.setAttribute("aria-pressed", String(candidate === button));
+      });
       if (siteSearchState.query) {
         renderSiteSearchResults();
       }
     });
-  }
+  });
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();

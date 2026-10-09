@@ -57,7 +57,7 @@
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20261009-1">
+<link rel="stylesheet" href="style.css?v=20261009-2">
 </head>
 <body>
 
@@ -714,13 +714,16 @@
           <button type="button" data-site-search-filter="news" aria-pressed="false" data-kr="소식" data-en="News">소식</button>
           <button type="button" data-site-search-filter="member" aria-pressed="false" data-kr="구성원" data-en="Members">구성원</button>
         </div>
-        <label class="site-search-sort" for="site-search-sort">
-          <span data-kr="정렬" data-en="Sort">정렬</span>
-          <select id="site-search-sort">
-            <option value="relevance" data-kr="관련도순" data-en="Relevance">관련도순</option>
-            <option value="latest" data-kr="최신순" data-en="Newest">최신순</option>
-          </select>
-        </label>
+        <div class="site-search-sort" role="group" aria-label="검색 결과 정렬"
+          data-aria-kr="검색 결과 정렬" data-aria-en="Sort search results">
+          <span class="site-search-sort-label" data-kr="정렬" data-en="Sort">정렬</span>
+          <div class="site-search-sort-options">
+            <button type="button" data-site-search-sort="relevance" aria-pressed="true"
+              data-kr="관련도순" data-en="Relevance">관련도순</button>
+            <button type="button" data-site-search-sort="latest" aria-pressed="false"
+              data-kr="최신순" data-en="Newest">최신순</button>
+          </div>
+        </div>
       </div>
       <p class="site-search-status" id="site-search-status" aria-live="polite"
         data-kr="검색 자료를 준비하는 중입니다." data-en="Preparing the search index.">검색 자료를 준비하는 중입니다.</p>
@@ -778,6 +781,6 @@
   </div>
 </footer>
   
-  <script src="script.js?v=20261009-1"></script>
+  <script src="script.js?v=20261009-3"></script>
 </body>
 </html>

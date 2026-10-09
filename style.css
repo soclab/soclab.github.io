@@ -1120,7 +1120,7 @@ h2::after{content:"";display:block;width:40px;height:3px;background:var(--line-m
   grid-template-columns:auto minmax(0,1fr) auto;
   align-items:center;
   gap:12px;
-  width:min(720px,100%);
+  width:100%;
   padding:8px 8px 8px 18px;
   border:1px solid rgba(255,255,255,.58);
   border-radius:9px;
@@ -1176,11 +1176,13 @@ h2::after{content:"";display:block;width:40px;height:3px;background:var(--line-m
 .site-search-form button:hover{background:#2d4f6e}
 
 .site-search-controls{
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:18px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  align-items:center;
+  gap:14px 24px;
   margin-top:18px;
+  padding-top:16px;
+  border-top:1px solid rgba(255,255,255,.16);
 }
 
 .site-search-filters{
@@ -1213,20 +1215,47 @@ h2::after{content:"";display:block;width:40px;height:3px;background:var(--line-m
   display:flex;
   flex:none;
   align-items:center;
-  gap:8px;
+  gap:10px;
   color:#dce9f3;
   font-size:12.5px;
 }
 
-.site-search-sort select{
-  padding:7px 30px 7px 10px;
-  border:1px solid rgba(255,255,255,.4);
-  border-radius:6px;
-  color:var(--ink);
-  background:#fff;
+.site-search-sort-label{
+  color:#b9d2e6;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+.site-search-sort-options{
+  display:grid;
+  grid-template-columns:repeat(2,auto);
+  padding:3px;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:8px;
+  background:rgba(10,29,46,.28);
+}
+
+.site-search-sort-options button{
+  padding:6px 11px;
+  border:0;
+  border-radius:5px;
+  color:#c8dbea;
+  background:transparent;
   font:inherit;
   font-size:12.5px;
   cursor:pointer;
+  transition:color .18s ease,background .18s ease,box-shadow .18s ease;
+}
+
+.site-search-sort-options button:hover,
+.site-search-sort-options button:focus-visible{
+  color:#fff;
+}
+
+.site-search-sort-options button[aria-pressed="true"]{
+  color:var(--bg-deep);
+  background:#fff;
+  box-shadow:0 2px 8px rgba(10,29,46,.18);
 }
 
 .site-search-status{
@@ -1300,8 +1329,8 @@ h2::after{content:"";display:block;width:40px;height:3px;background:var(--line-m
 
 @media (max-width:720px){
   .site-search{padding:30px 22px}
-  .site-search-controls{align-items:stretch;flex-direction:column}
-  .site-search-sort{align-self:flex-end}
+  .site-search-controls{grid-template-columns:1fr}
+  .site-search-sort{justify-self:end}
   .site-search-result-list{grid-template-columns:1fr}
 }
 
