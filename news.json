@@ -1,5 +1,13 @@
 [
  {
+  "id": 1262,
+  "board": "notice",
+  "category": "event",
+  "date": "2026-10-09",
+  "title": "연구실 방장 메일 변경",
+  "body": "안녕하세요. 컴퓨터 시스템 및 고신뢰성 SOC 연구실입니다.\n\n연구실 방장 메일 주소가 변경되었습니다.\n\n\n변경 전: comsys@soc.yonsei.ac.kr\n변경 후: comsys.yonsei@gmail.com"
+ },
+ {
   "id": 1261,
   "board": "notice",
   "category": "event",
