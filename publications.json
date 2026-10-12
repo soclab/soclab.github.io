@@ -1,6 +1,6 @@
 [
   {
-    "id": 237,
+    "id": 238,
     "type": "international-journal",
     "status": "accepted",
     "year": 2026,
@@ -14,6 +14,27 @@
       "Sungho Kang"
     ],
     "journal": "IEEE Transactions on Very Large Scale Integration Systems",
+    "volume": "",
+    "issue": "",
+    "pages": "",
+    "date": "",
+    "url": "",
+    "doi": ""
+  },
+  {
+    "id": 237,
+    "type": "international-journal",
+    "status": "accepted",
+    "year": 2026,
+    "month": null,
+    "title": "Subarray-Based Victim-Centric Per-Row Counting",
+    "authors": [
+      "Hwayoung Jeong", 
+      "Juyong Lee", 
+      "Hayoung Lee", 
+      "Sungho Kang"
+    ],
+    "journal": "IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems",
     "volume": "",
     "issue": "",
     "pages": "",
