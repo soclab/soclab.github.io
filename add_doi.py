@@ -36,13 +36,13 @@ import json
 import os
 import re
 import shutil
+import subprocess
 import sys
 import time
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 from urllib.parse import quote, urlparse
-from zoneinfo import ZoneInfo
 
 try:
     import requests
@@ -69,6 +69,7 @@ SEARCH_RESULT_COUNT = 20
 DEFAULT_DELAY_SECONDS = 0.35
 REQUEST_TIMEOUT = (8, 25)
 REDIRECT_STATUS_CODES = {301, 302, 303, 307, 308}
+KOREA_TIMEZONE = timezone(timedelta(hours=9), name="Asia/Seoul")
 
 
 def parse_arguments() -> argparse.Namespace:
@@ -94,6 +95,21 @@ def parse_arguments() -> argparse.Namespace:
         type=float,
         default=DEFAULT_DELAY_SECONDS,
         help=f"논문별 요청 간격(초, 기본값: {DEFAULT_DELAY_SECONDS})",
+    )
+    parser.add_argument(
+        "--only-id",
+        action="append",
+        default=[],
+        help="지정한 논문 ID만 처리합니다. 여러 건이면 옵션을 반복합니다.",
+    )
+    parser.add_argument(
+        "--changed-from",
+        help="지정한 Git 커밋과 비교해 추가·수정된 논문만 처리합니다.",
+    )
+    parser.add_argument(
+        "--no-artifacts",
+        action="store_true",
+        help="CI용: 백업과 보고서 파일을 만들지 않습니다.",
     )
     return parser.parse_args()
 
@@ -453,8 +469,48 @@ def load_publications(source_path: Path) -> list[dict[str, Any]]:
     return publications
 
 
+def get_changed_publication_ids(
+    source_path: Path,
+    publications: list[dict[str, Any]],
+    base_ref: str,
+) -> set[str]:
+    repository_root = Path(
+        subprocess.run(
+            ["git", "rev-parse", "--show-toplevel"],
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout.strip()
+    ).resolve()
+    relative_source = source_path.relative_to(repository_root).as_posix()
+    previous_text = subprocess.run(
+        ["git", "show", f"{base_ref}:{relative_source}"],
+        check=True,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+    ).stdout
+    previous = json.loads(previous_text)
+    if not isinstance(previous, list):
+        raise ValueError("비교 대상 publications.json의 최상위 값은 배열이어야 합니다.")
+
+    previous_by_id = {
+        str(record.get("id")): record
+        for record in previous
+        if isinstance(record, dict) and record.get("id") is not None
+    }
+    return {
+        str(record.get("id"))
+        for record in publications
+        if record.get("id") is not None
+        and record.get("type") == "international-journal"
+        and not record.get("url")
+        and previous_by_id.get(str(record.get("id"))) != record
+    }
+
+
 def get_timestamp() -> str:
-    return datetime.now(ZoneInfo("Asia/Seoul")).strftime("%Y%m%d-%H%M%S")
+    return datetime.now(KOREA_TIMEZONE).strftime("%Y%m%d-%H%M%S")
 
 
 def create_unique_path(path: Path) -> Path:
@@ -544,6 +600,7 @@ def process_publications(
     session: requests.Session,
     delay_seconds: float,
     dry_run: bool,
+    target_ids: set[str] | None = None,
 ) -> tuple[list[str], dict[str, int]]:
     summary = {
         "matched": 0,
@@ -560,6 +617,7 @@ def process_publications(
         publication
         for publication in publications
         if publication.get("type") == "international-journal"
+        and (target_ids is None or str(publication.get("id")) in target_ids)
     ]
     total = len(target_publications)
     processed = 0
@@ -569,6 +627,10 @@ def process_publications(
         title = str(publication.get("title", "")).strip()
 
         if publication.get("type") != "international-journal":
+            summary["ignored"] += 1
+            continue
+
+        if target_ids is not None and str(publication_id) not in target_ids:
             summary["ignored"] += 1
             continue
 
@@ -683,6 +745,22 @@ def main() -> int:
         print(f"JSON을 읽을 수 없습니다: {error}", file=sys.stderr)
         return 1
 
+    target_ids = set(arguments.only_id) if arguments.only_id else None
+    if arguments.changed_from:
+        try:
+            changed_ids = get_changed_publication_ids(
+                source_path,
+                publications,
+                arguments.changed_from,
+            )
+        except (OSError, ValueError, json.JSONDecodeError, subprocess.SubprocessError) as error:
+            print(f"Git 변경 논문을 확인할 수 없습니다: {error}", file=sys.stderr)
+            return 1
+        target_ids = changed_ids if target_ids is None else target_ids & changed_ids
+
+    if target_ids is not None:
+        print("처리 대상 ID: " + (", ".join(sorted(target_ids)) or "없음"))
+
     timestamp = get_timestamp()
     session = create_http_session()
     report_lines, summary = process_publications(
@@ -690,20 +768,25 @@ def main() -> int:
         session,
         arguments.delay,
         arguments.dry_run,
+        target_ids,
     )
 
     backup_path: Path | None = None
-    if not arguments.dry_run:
-        backup_path = create_backup(source_path, timestamp)
+    updated = summary["matched"] + summary["provisional"] > 0
+    if not arguments.dry_run and updated:
+        if not arguments.no_artifacts:
+            backup_path = create_backup(source_path, timestamp)
         write_publications_atomically(source_path, publications)
 
-    report_path = write_report(
-        source_path,
-        timestamp,
-        report_lines,
-        summary,
-        arguments.dry_run,
-    )
+    report_path: Path | None = None
+    if not arguments.no_artifacts:
+        report_path = write_report(
+            source_path,
+            timestamp,
+            report_lines,
+            summary,
+            arguments.dry_run,
+        )
 
     print("\n완료")
     print(f"- 자동 확정: {summary['matched']}")
@@ -715,7 +798,8 @@ def main() -> int:
     print(f"- 기존 임시 URL(검토 필요): {summary['existing_review']}")
     if backup_path is not None:
         print(f"- 백업: {backup_path.name}")
-    print(f"- 보고서: {report_path.name}")
+    if report_path is not None:
+        print(f"- 보고서: {report_path.name}")
 
     return 0
 

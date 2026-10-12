@@ -27,11 +27,11 @@
     "status": "accepted",
     "year": 2026,
     "month": null,
-    "title": "Subarray-Based Victim-Centric Per-Row Counting",
+    "title": "Subarray-Based Victim-Centric Per-Row Counting for Mitigating RowHammer",
     "authors": [
-      "Hwayoung Jeong", 
-      "Juyong Lee", 
-      "Hayoung Lee", 
+      "Hwayoung Jeong",
+      "Juyong Lee",
+      "Hayoung Lee",
       "Sungho Kang"
     ],
     "journal": "IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems",
@@ -39,8 +39,8 @@
     "issue": "",
     "pages": "",
     "date": "",
-    "url": "",
-    "doi": ""
+    "url": "https://doi.org/10.1109/tcad.2026.3694342",
+    "doi": "10.1109/tcad.2026.3694342"
   },
   {
     "id": 236,
