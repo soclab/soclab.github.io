@@ -129,6 +129,23 @@ def text_similarity(first: str, second: str) -> float:
     ).ratio()
 
 
+def normalize_journal_text(text: str) -> str:
+    normalized = normalize_text(text)
+    if "very large scale integration" in normalized:
+        normalized = " ".join(
+            token for token in normalized.split() if token != "vlsi"
+        )
+    return normalized
+
+
+def journal_similarity(first: str, second: str) -> float:
+    return difflib.SequenceMatcher(
+        None,
+        normalize_journal_text(first),
+        normalize_journal_text(second),
+    ).ratio()
+
+
 def get_local_first_author_surname(publication: dict[str, Any]) -> str:
     authors = publication.get("authors")
     if not isinstance(authors, list) or not authors:
@@ -185,7 +202,7 @@ def calculate_journal_similarity(
         return 0.0, ""
 
     scored_candidates = [
-        (text_similarity(local_journal, candidate), candidate)
+        (journal_similarity(local_journal, candidate), candidate)
         for candidate in candidates
     ]
     return max(scored_candidates, key=lambda candidate: candidate[0])
