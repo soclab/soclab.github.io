@@ -16,7 +16,7 @@
     "journal": "IEEE Transactions on Very Large Scale Integration Systems",
     "volume": "",
     "issue": "",
-    "pages": "",
+    "pages": "1–13",
     "date": "",
     "url": "https://doi.org/10.1109/tvlsi.2026.3740075",
     "doi": "10.1109/tvlsi.2026.3740075"
@@ -24,9 +24,9 @@
   {
     "id": 237,
     "type": "international-journal",
-    "status": "accepted",
+    "status": "published",
     "year": 2026,
-    "month": null,
+    "month": 11,
     "title": "Subarray-Based Victim-Centric Per-Row Counting for Mitigating RowHammer",
     "authors": [
       "Hwayoung Jeong",
@@ -35,19 +35,19 @@
       "Sungho Kang"
     ],
     "journal": "IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems",
-    "volume": "",
-    "issue": "",
-    "pages": "",
-    "date": "",
+    "volume": "45",
+    "issue": "11",
+    "pages": "5715–5728",
+    "date": "2026.11",
     "url": "https://doi.org/10.1109/tcad.2026.3694342",
     "doi": "10.1109/tcad.2026.3694342"
   },
   {
     "id": 236,
     "type": "international-journal",
-    "status": "accepted",
+    "status": "published",
     "year": 2026,
-    "month": null,
+    "month": 11,
     "title": "A Pre-Load Compression Using Test Vector Segmentation for High-Speed Memory Testing",
     "authors": [
       "Duyeon Won",
@@ -57,10 +57,10 @@
       "Sungho Kang"
     ],
     "journal": "IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems",
-    "volume": "",
-    "issue": "",
-    "pages": "",
-    "date": "",
+    "volume": "45",
+    "issue": "11",
+    "pages": "5779–5783",
+    "date": "2026.11",
     "url": "https://doi.org/10.1109/tcad.2026.3683969",
     "doi": "10.1109/tcad.2026.3683969"
   },
