@@ -6796,5 +6796,39 @@
   "auto_generated": true,
   "source_key": "publication:238:acceptance",
   "id": 1268
+ },
+ {
+  "board": "research",
+  "category": "publication",
+  "date": "2026-11-30",
+  "title": "Publication - 2026 IEEE TCAD - Duyeon Won, etc.",
+  "body": "In November 2026,\n\"A Pre-Load Compression Using Test Vector Segmentation for High-Speed Memory Testing\" written by Duyeon Won, Juyong Lee, Gyeonggyu Park, Youngki Moon, and Sungho Kang has been published in the IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems, vol.45, no.11, pp.5779-5783.\n\nAuthors' hard work has finally paid off !",
+  "body_html": "In November 2026,\n\"A Pre-Load Compression Using Test Vector Segmentation for High-Speed Memory Testing\" written by Duyeon Won, Juyong Lee, Gyeonggyu Park, Youngki Moon, and Sungho Kang has been published in the IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems, vol.45, no.11, pp.5779-5783.\n\nAuthors' hard work has finally paid off !",
+  "images": [],
+  "views": 0,
+  "pinned": false,
+  "paper_title": "A Pre-Load Compression Using Test Vector Segmentation for High-Speed Memory Testing",
+  "authors": "Duyeon Won, Juyong Lee, Gyeonggyu Park, Youngki Moon, and Sungho Kang",
+  "attachments": [],
+  "auto_generated": true,
+  "source_key": "publication:236:publication",
+  "id": 1269
+ },
+ {
+  "board": "research",
+  "category": "publication",
+  "date": "2026-11-30",
+  "title": "Publication - 2026 IEEE TCAD - Hwayoung Jeong, etc.",
+  "body": "In November 2026,\n\"Subarray-Based Victim-Centric Per-Row Counting for Mitigating RowHammer\" written by Hwayoung Jeong, Juyong Lee, Hayoung Lee, and Sungho Kang has been published in the IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems, vol.45, no.11, pp.5715-5728.\n\nAuthors' hard work has finally paid off !",
+  "body_html": "In November 2026,\n\"Subarray-Based Victim-Centric Per-Row Counting for Mitigating RowHammer\" written by Hwayoung Jeong, Juyong Lee, Hayoung Lee, and Sungho Kang has been published in the IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems, vol.45, no.11, pp.5715-5728.\n\nAuthors' hard work has finally paid off !",
+  "images": [],
+  "views": 0,
+  "pinned": false,
+  "paper_title": "Subarray-Based Victim-Centric Per-Row Counting for Mitigating RowHammer",
+  "authors": "Hwayoung Jeong, Juyong Lee, Hayoung Lee, and Sungho Kang",
+  "attachments": [],
+  "auto_generated": true,
+  "source_key": "publication:237:publication",
+  "id": 1270
  }
 ]
