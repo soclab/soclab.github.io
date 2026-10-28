@@ -17,7 +17,7 @@ import subprocess
 import sys
 import unicodedata
 from dataclasses import dataclass
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
@@ -169,15 +169,21 @@ def parse_date_parts(value: Any) -> tuple[int, int, int | None] | None:
     return year, month, day
 
 
+KOREA_TIMEZONE = timezone(timedelta(hours=9), name="Asia/Seoul")
+
+
 def fallback_commit_date(value: str) -> date:
     if value:
         try:
-            return datetime.fromisoformat(value.replace("Z", "+00:00")).date()
+            parsed_time = datetime.fromisoformat(value.replace("Z", "+00:00"))
+            if parsed_time.tzinfo is not None:
+                parsed_time = parsed_time.astimezone(KOREA_TIMEZONE)
+            return parsed_time.date()
         except ValueError:
             parsed = parse_date_parts(value)
             if parsed:
                 return date(parsed[0], parsed[1], parsed[2] or 1)
-    return datetime.now(timezone.utc).date()
+    return datetime.now(KOREA_TIMEZONE).date()
 
 
 def news_date(value: Any, *, end_of_month: bool = False) -> str | None:
@@ -308,7 +314,9 @@ def make_acceptance_news(
     )
 
 
-def make_publication_news(record: dict[str, Any], fallback: date) -> dict[str, Any]:
+def make_publication_news(
+    record: dict[str, Any], fallback: date, existing_date: str | None = None
+) -> dict[str, Any]:
     authors = format_people(record.get("authors"))
     lead = str((record.get("authors") or ["Unknown"])[0]).strip()
     year = int(record.get("year") or fallback.year)
@@ -322,7 +330,8 @@ def make_publication_news(record: dict[str, Any], fallback: date) -> dict[str, A
         f"{journal}, vol.{record.get('volume')}, no.{record.get('issue')}, pp.{pages}.\n\n"
         "Authors' hard work has finally paid off !"
     )
-    post_date = news_date(record.get("date"), end_of_month=True) or fallback.isoformat()
+    # 게시일은 게재 정보가 확인되어 공지가 올라간 날입니다. 기존 공지의 날짜는 유지합니다.
+    post_date = existing_date or fallback.isoformat()
     return common_news_fields(
         source_key=publication_key(record, "publication"),
         category="publication",
@@ -509,7 +518,12 @@ def main() -> int:
         existing_publication = by_source_key.get(publication_source_key)
         if existing_publication and publication_ready(current):
             updated += int(
-                update_generated_item(existing_publication, make_publication_news(current, fallback))
+                update_generated_item(
+                    existing_publication,
+                    make_publication_news(
+                        current, fallback, str(existing_publication.get("date") or "")
+                    ),
+                )
             )
         elif publication_ready(current) and (
             record_id in recent_publication_ids
