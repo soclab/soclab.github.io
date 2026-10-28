@@ -453,10 +453,13 @@ def build_bibliographic_metadata(item: dict[str, Any]) -> dict[str, Any]:
     ).strip()
     print_date = get_crossref_print_date(item)
     year, month = print_date if print_date else (None, None)
+    volume = str(item.get("volume") or "").strip()
+    # Early Access 논문의 page(예: 1-13)는 임시 번호이므로 권호가 배정된 뒤에만 씁니다.
+    pages = format_crossref_pages(str(item.get("page") or "")) if volume else ""
     return {
-        "volume": str(item.get("volume") or "").strip(),
+        "volume": volume,
         "issue": issue,
-        "pages": format_crossref_pages(str(item.get("page") or "")),
+        "pages": pages,
         "date": f"{year}.{month:02d}" if print_date else "",
         "year": year,
         "month": month,
