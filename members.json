@@ -489,6 +489,17 @@
     "private_detail_obfuscated": "v2.aAsb5QZl9KJNgP_wwOfmMnLE-ygK7LOkDiH0oe7XPUF4h_16DqQPkV28ba3OIi06Eun5yhpFMkuvHHpWoOec"
   },
   {
+    "id": "6728",
+    "group": "student",
+    "category": "인턴",
+    "name_kr": "김규민",
+    "name_en": "Gyumin Kim",
+    "photo": "images/members/Gyumin_Kim.jpg",
+    "display_order": 2,
+    "research_interests": "SoC Design & Test",
+    "private_detail_obfuscated": "v2.EqX30_qPr0Pm7_gDr4tmhqBKjab6RuLH_iOOp0a-rrkpXMBKHMwnBXPCMtP7xd_0WZ4_wG2xghBuDc15xT5qNw"
+  },
+  {
     "id": "6701",
     "group": "student",
     "category": "석사과정",

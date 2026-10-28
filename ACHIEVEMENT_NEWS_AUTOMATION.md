@@ -21,6 +21,12 @@
 - 이후 같은 `id`에 실제 `date`, `volume`, `issue`, `pages`를 모두 입력하면
   Publication 게시글을 별도로 생성합니다. `status`도 `published`로 바꾸는 것을
   권장하지만, 게시 판정은 실제 게재 정보 네 필드를 기준으로 합니다.
+- 확정 DOI가 있는 `accepted` 논문은 매일 03:15(KST) 실행되는
+  `Check publication DOIs daily`가 Crossref에서 해당 DOI를 조회해, 있는 값으로
+  비어 있는 `volume`, `issue`, `pages`, `date`, `month`를 채웁니다. volume·pages·
+  date가 모두 채워지면 `status`를 `published`로 바꾸고, Publication 게시글 생성과
+  사이트 배포를 이어서 실행합니다. Crossref에 아직 정보가 없으면(Early Access)
+  기다리며, 직접 입력한 값은 덮어쓰지 않습니다.
 - 자동화 설치 전부터 `published`였던 최신 10편도 공지를 대조합니다. Publication
   글이 빠져 있으면 최초 실행에서 자동 생성합니다.
 - 제목의 학술지 약칭은 내장된 표를 사용합니다. 새 학술지의 약칭을 직접 정하려면

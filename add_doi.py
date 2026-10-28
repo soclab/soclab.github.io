@@ -15,6 +15,15 @@
 DOI를 먼저 기록하고 보고서에서 추후 검토 대상으로 구분합니다. DOI가 실제로
 열리지 않거나 제목과 연도가 명백히 다른 후보는 JSON을 수정하지 않습니다.
 
+게재 정보 자동 입력
+-------------------
+확정 DOI가 있으면서 volume·pages·date가 비어 있는 논문(주로 ``accepted``)은
+Crossref의 해당 DOI 레코드를 직접 조회해, Crossref에 있는 volume·issue·page·
+인쇄본 게재일(published-print)로 비어 있는 필드를 채웁니다. volume·pages·date가
+모두 채워지면 ``status``를 ``published``로 바꿉니다. Early Access처럼 Crossref에
+아직 정보가 없으면 다음 실행까지 기다립니다. 이미 입력된 값은 덮어쓰지 않으며,
+임시 DOI(``doi_review_required: true``)는 대상에서 제외합니다.
+
 사용법
 ------
     py -m pip install requests
@@ -23,7 +32,7 @@ DOI를 먼저 기록하고 보고서에서 추후 검토 대상으로 구분합�
 
 실행 결과
 ---------
-- publications.json: 확정 또는 임시 검토 DOI가 추가된 원본 파일
+- publications.json: 확정 또는 임시 검토 DOI, 게재 정보가 추가된 원본 파일
 - publications.backup-YYYYMMDD-HHMMSS.json: 실행 전 백업
 - doi_report-YYYYMMDD-HHMMSS.txt: 전체 판정 결과
 """
@@ -385,6 +394,121 @@ def verify_doi_resolution(
     return resolved, redirect_target, response.status_code
 
 
+def needs_bibliographic_metadata(publication: dict[str, Any]) -> bool:
+    if not publication.get("doi") or publication.get("doi_review_required") is True:
+        return False
+
+    return publication.get("status") == "accepted" or any(
+        not str(publication.get(field) or "").strip()
+        for field in ("volume", "pages", "date")
+    )
+
+
+def fetch_crossref_work(
+    session: requests.Session,
+    doi: str,
+) -> dict[str, Any]:
+    response = session.get(
+        CROSSREF_API_URL + "/" + quote(doi, safe="/:;()"),
+        params={"mailto": MAILTO},
+        timeout=REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+    item = response.json().get("message", {})
+    if not isinstance(item, dict):
+        raise ValueError("Crossref 응답 형식이 올바르지 않습니다.")
+    return item
+
+
+def get_crossref_print_date(item: dict[str, Any]) -> tuple[int, int] | None:
+    # Early Access 단계에는 published-online만 있으므로 인쇄본 게재일만 인정합니다.
+    journal_issue = item.get("journal-issue")
+    if not isinstance(journal_issue, dict):
+        journal_issue = {}
+
+    for source in (item.get("published-print"), journal_issue.get("published-print")):
+        if not isinstance(source, dict):
+            continue
+        date_parts = source.get("date-parts", [])
+        if not date_parts or len(date_parts[0]) < 2:
+            continue
+
+        year, month = date_parts[0][0], date_parts[0][1]
+        if isinstance(year, int) and isinstance(month, int) and 1 <= month <= 12:
+            return year, month
+
+    return None
+
+
+def format_crossref_pages(page: str) -> str:
+    return re.sub(r"\s*[-‐‑–—]\s*", "–", page.strip())
+
+
+def build_bibliographic_metadata(item: dict[str, Any]) -> dict[str, Any]:
+    journal_issue = item.get("journal-issue")
+    issue = str(
+        item.get("issue")
+        or (journal_issue.get("issue") if isinstance(journal_issue, dict) else "")
+        or ""
+    ).strip()
+    print_date = get_crossref_print_date(item)
+    year, month = print_date if print_date else (None, None)
+    return {
+        "volume": str(item.get("volume") or "").strip(),
+        "issue": issue,
+        "pages": format_crossref_pages(str(item.get("page") or "")),
+        "date": f"{year}.{month:02d}" if print_date else "",
+        "year": year,
+        "month": month,
+    }
+
+
+def apply_bibliographic_metadata(
+    publication: dict[str, Any],
+    metadata: dict[str, Any],
+) -> list[str]:
+    changes: list[str] = []
+
+    for field in ("volume", "issue", "pages", "date"):
+        if metadata[field] and not str(publication.get(field) or "").strip():
+            publication[field] = metadata[field]
+            changes.append(f"{field}={metadata[field]}")
+
+    # 채택 시점에 추정한 연도는 실제 게재 연도로 맞춥니다.
+    if metadata["date"] and (
+        publication.get("month") in (None, "") or publication.get("status") == "accepted"
+    ):
+        for field in ("year", "month"):
+            if publication.get(field) != metadata[field]:
+                publication[field] = metadata[field]
+                changes.append(f"{field}={metadata[field]}")
+
+    is_published = all(
+        str(publication.get(field) or "").strip()
+        for field in ("volume", "pages", "date")
+    )
+    if is_published and publication.get("status") != "published":
+        publication["status"] = "published"
+        changes.append("status=published")
+
+    return changes
+
+
+def fill_bibliographic_metadata(
+    session: requests.Session,
+    publication: dict[str, Any],
+    dry_run: bool,
+) -> tuple[bool, list[str]]:
+    item = fetch_crossref_work(session, str(publication["doi"]))
+    metadata = build_bibliographic_metadata(item)
+
+    target = dict(publication) if dry_run else publication
+    changes = apply_bibliographic_metadata(target, metadata)
+    if not changes:
+        return False, ["    - 게재 정보: 대기 (Crossref에 새 게재 정보 없음)"]
+    return True, [f"    - 게재 정보: {', '.join(changes)}"]
+
+
 def format_check(name: str, passed: bool, detail: str) -> str:
     marker = "PASS" if passed else "FAIL"
     return f"    - {name}: {marker} ({detail})"
@@ -602,6 +726,8 @@ def write_report(
         f"- 오류: {summary['error']}",
         f"- 기존 확정 URL 유지: {summary['skipped']}",
         f"- 기존 임시 URL(검토 필요): {summary['existing_review']}",
+        f"- 게재 정보 입력: {summary['metadata_filled']}",
+        f"- 게재 대기(권호 미배정): {summary['metadata_waiting']}",
         f"- 대상 외 항목: {summary['ignored']}",
     ]
 
@@ -627,6 +753,8 @@ def process_publications(
         "error": 0,
         "skipped": 0,
         "existing_review": 0,
+        "metadata_filled": 0,
+        "metadata_waiting": 0,
         "ignored": 0,
     }
     report_lines: list[str] = []
@@ -665,6 +793,35 @@ def process_publications(
                     f"{processed}/{total} "
                     f"[기존 임시 URL · 검토 필요] #{publication_id}"
                 )
+            elif needs_bibliographic_metadata(publication):
+                try:
+                    print(
+                        f"{processed}/{total} [게재 정보 조회 중] #{publication_id}",
+                        flush=True,
+                    )
+                    filled, detail_lines = fill_bibliographic_metadata(
+                        session,
+                        publication,
+                        dry_run,
+                    )
+                    if filled:
+                        summary["metadata_filled"] += 1
+                        result_label = (
+                            "DRY RUN 게재 정보 입력 대상" if dry_run else "게재 정보 입력"
+                        )
+                    else:
+                        summary["metadata_waiting"] += 1
+                        result_label = "게재 대기"
+                    report_lines.append(f"[{result_label}] {prefix}")
+                    report_lines.extend(detail_lines)
+                    print(f"{processed}/{total} [{result_label}] #{publication_id}")
+                except (requests.RequestException, ValueError, KeyError, TypeError) as error:
+                    summary["error"] += 1
+                    report_lines.append(
+                        f"[오류] {prefix}\n    - {type(error).__name__}: {error}"
+                    )
+                    print(f"{processed}/{total} [오류] #{publication_id}: {error}")
+                time.sleep(delay_seconds)
             else:
                 summary["skipped"] += 1
                 report_lines.append(f"[기존 확정 URL 유지] {prefix}")
@@ -789,7 +946,9 @@ def main() -> int:
     )
 
     backup_path: Path | None = None
-    updated = summary["matched"] + summary["provisional"] > 0
+    updated = (
+        summary["matched"] + summary["provisional"] + summary["metadata_filled"] > 0
+    )
     if not arguments.dry_run and updated:
         if not arguments.no_artifacts:
             backup_path = create_backup(source_path, timestamp)
@@ -813,6 +972,8 @@ def main() -> int:
     print(f"- 오류: {summary['error']}")
     print(f"- 기존 확정 URL 유지: {summary['skipped']}")
     print(f"- 기존 임시 URL(검토 필요): {summary['existing_review']}")
+    print(f"- 게재 정보 입력: {summary['metadata_filled']}")
+    print(f"- 게재 대기(권호 미배정): {summary['metadata_waiting']}")
     if backup_path is not None:
         print(f"- 백업: {backup_path.name}")
     if report_path is not None:
