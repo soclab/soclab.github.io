@@ -1,5 +1,35 @@
 [
  {
+  "id": 143,
+  "type": "patent",
+  "scope": "domestic",
+  "status": "granted",
+  "title": "TSV 테스트 장치",
+  "inventors": [
+   "강성호",
+   "한동현"
+  ],
+  "number": "10-3030826",
+  "date": "2026.10.06",
+  "year": 2026,
+  "note": ""
+ },
+ {
+  "id": 142,
+  "type": "patent",
+  "scope": "domestic",
+  "status": "granted",
+  "title": "고속 바운더리 스캔 테스트 장치",
+  "inventors": [
+   "강성호",
+   "장석준"
+  ],
+  "number": "10-3030825",
+  "date": "2026.10.06",
+  "year": 2026,
+  "note": ""
+ },
+ {
   "id": 141,
   "type": "patent",
   "scope": "domestic",

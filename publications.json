@@ -1,5 +1,46 @@
 [
   {
+    "id": 240,
+    "type": "international-journal",
+    "status": "accepted",
+    "year": 2026,
+    "month": null,
+    "title": "Power and Test Time Aware Test Pattern Generation for Chiplet Interconnects",
+    "authors": [
+      "Jongho Park",
+      "Nuri Son",
+      "Junghyun Sohn",
+      "Sungho Kang"
+    ],
+    "journal": "IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems",
+    "volume": "",
+    "issue": "",
+    "pages": "",
+    "date": ""
+  },
+  {
+    "id": 239,
+    "type": "international-journal",
+    "status": "accepted",
+    "year": 2026,
+    "month": null,
+    "title": "A Unified Scan Architecture for Multiple-Fault Diagnosis and Flip-Flop Aging Monitoring Using Data Duplication",
+    "authors": [
+      "Hyojun Yun",
+      "Sunghoon Kim",
+      "Wonjun Kim",
+      "Doohyun Yoon",
+      "Sungho Kang"
+    ],
+    "journal": "IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems",
+    "volume": "",
+    "issue": "",
+    "pages": "",
+    "date": "",
+    "url": "https://doi.org/10.1109/tcad.2026.3741781",
+    "doi": "10.1109/tcad.2026.3741781"
+  },
+  {
     "id": 238,
     "type": "international-journal",
     "status": "accepted",
