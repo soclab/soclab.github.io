@@ -143,6 +143,10 @@ def records_by_id(records: Iterable[dict[str, Any]]) -> dict[str, dict[str, Any]
 
 def normalize_text(value: Any) -> str:
     text = unicodedata.normalize("NFKD", str(value or "")).casefold()
+    # Drop accents but recompose Hangul so Korean titles survive the filter below.
+    text = unicodedata.normalize(
+        "NFC", "".join(ch for ch in text if not unicodedata.combining(ch))
+    )
     return re.sub(r"[^a-z0-9가-힣]+", "", text)
 
 
@@ -407,7 +411,11 @@ def legacy_news_exists(news: Iterable[dict[str, Any]], desired: dict[str, Any]) 
             continue
         item_title = normalize_text(item.get("paper_title"))
         item_body = normalize_text(item.get("body"))
-        if target != item_title and target not in item_body:
+        if stage == "patent":
+            # Patent titles are short and often prefixes of each other.
+            if target != item_title:
+                continue
+        elif target != item_title and target not in item_body:
             continue
         heading = str(item.get("title") or "").casefold()
         body = str(item.get("body") or "").casefold()

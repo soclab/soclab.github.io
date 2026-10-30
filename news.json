@@ -6889,5 +6889,22 @@
   "auto_generated": true,
   "source_key": "publication:240:acceptance",
   "id": 1273
+ },
+ {
+  "board": "research",
+  "category": "patent",
+  "date": "2026-10-06",
+  "title": "2026 Domestic Patent - Donghyun Han, etc.",
+  "body": "The following patent has been approved by the Korean Intellectual Property Office in October 2026.\nCongratulations to the authors.\n\nTitle: TSV 테스트 장치\nAuthors: 강성호, 한동현",
+  "body_html": "The following patent has been approved by the Korean Intellectual Property Office in October 2026.\nCongratulations to the authors.\n\nTitle: TSV 테스트 장치\nAuthors: 강성호, 한동현",
+  "images": [],
+  "views": 0,
+  "pinned": false,
+  "paper_title": "TSV 테스트 장치",
+  "authors": "강성호, 한동현",
+  "attachments": [],
+  "auto_generated": true,
+  "source_key": "patent:domestic:143:granted",
+  "id": 1274
  }
 ]
