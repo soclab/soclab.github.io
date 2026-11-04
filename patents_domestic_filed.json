@@ -1,5 +1,85 @@
 [
  {
+  "id": 204,
+  "type": "patent",
+  "scope": "domestic",
+  "status": "filed",
+  "title": "회로 간 전이 기반 그래프 신경망을 이용한 스캔 체인 고장 진단 장치 및 방법",
+  "inventors": [
+   "강성호",
+   "이미혜"
+  ],
+  "date": "2026.10.23",
+  "year": 2026,
+  "number": "10-2026-0205627",
+  "country": "대한민국",
+  "note": ""
+ },
+ {
+  "id": 203,
+  "type": "patent",
+  "scope": "domestic",
+  "status": "filed",
+  "title": "트랜지스터 연결 구조 및 결함 유형별 비용 결합을 이용한 셀 내부 결함의 검출성 비용 산출 장치 및 그 동작 방법",
+  "inventors": [
+   "강성호",
+   "윤두현"
+  ],
+  "date": "2026.10.15",
+  "year": 2026,
+  "number": "10-2026-0198962",
+  "country": "대한민국",
+  "note": ""
+ },
+ {
+  "id": 202,
+  "type": "patent",
+  "scope": "domestic",
+  "status": "filed",
+  "title": "집적회로 내부 신호 모니터링 장치 및 방법",
+  "inventors": [
+   "강성호",
+   "김원준"
+  ],
+  "date": "2026.10.13",
+  "year": 2026,
+  "number": "10-2026-0196096",
+  "country": "대한민국",
+  "note": ""
+ },
+ {
+  "id": 201,
+  "type": "patent",
+  "scope": "domestic",
+  "status": "filed",
+  "title": "다중 노드 지연 측정 기반 집적회로 열화 진단 장치 및 방법",
+  "inventors": [
+   "강성호",
+   "김원준"
+  ],
+  "date": "2026.10.01",
+  "year": 2026,
+  "number": "10-2026-0188028",
+  "country": "대한민국",
+  "note": ""
+ },
+ {
+  "id": 200,
+  "type": "patent",
+  "scope": "domestic",
+  "status": "filed",
+  "title": "테스트 패턴들을 생성하는 집적 회로, 이를 포함하는 반도체 패키지, 및 그것에 의해 수행되는 방법",
+  "inventors": [
+   "강성호",
+   "박종호"
+  ],
+  "date": "2026.09.30",
+  "year": 2026,
+  "number": "10-2026-0187330",
+  "country": "대한민국",
+  "note": "사외특허"
+ },
+ {
   "id": 199,
   "type": "patent",
   "scope": "domestic",
