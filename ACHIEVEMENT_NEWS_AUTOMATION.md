@@ -67,6 +67,23 @@
 }
 ```
 
+## 국제학회
+
+- `international_conferences.json`의 논문을 같은 연도·학회명끼리 묶어 학회마다
+  게시글 하나를 만듭니다. 게시판은 연구, 카테고리는 행사(`event`)입니다.
+- 제목은 `2026 ISOCC Presentation`, 본문은 `The following papers have been
+  presented in ISOCC 2026`으로 시작하고 논문별 `Title`/`Authors`를 나열한 뒤
+  `Congratulations to the authors`로 끝납니다. 논문이 한 편이면 `paper has`로
+  씁니다.
+- 학회 약칭은 학회명 괄호 안의 값(예: `(ISOCC 2026)`)을 사용합니다. 괄호가 없는
+  학회는 레코드에 `"conference_abbr": "약칭"`을 추가하면 됩니다.
+- 학회 개최일(`date`)이 지난 뒤, 개최일로부터 90일 안에 있는 학회만 새로 게시합니다.
+  개최 전에 입력한 논문은 개최일 이후 첫 실행에서 게시되며, 오래된 학회는 소급
+  게시하지 않습니다.
+- 같은 학회 논문을 나중에 추가·수정하면 기존 자동 게시글 본문이 갱신됩니다.
+  같은 제목의 수동 게시글이 이미 있으면 새로 만들지 않습니다.
+- 게시 날짜는 게시글이 생성된 날(한국 시간)입니다.
+
 ## 특허
 
 - `patents_domestic_granted.json` 또는 `patents_international_granted.json`에 새

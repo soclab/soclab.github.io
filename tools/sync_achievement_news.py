@@ -26,8 +26,11 @@ PUBLICATIONS_FILE = "publications.json"
 DOMESTIC_PATENTS_FILE = "patents_domestic_granted.json"
 INTERNATIONAL_PATENTS_FILE = "patents_international_granted.json"
 MEMBERS_FILE = "members.json"
+CONFERENCES_FILE = "international_conferences.json"
 NEWS_FILE = "news.json"
 RECENT_PUBLICATION_RECONCILE_COUNT = 10
+# 학회 개최일로부터 이 기간 안에 있는 국제학회만 발표 소식을 새로 만듭니다.
+RECENT_CONFERENCE_DAYS = 90
 
 SOURCE_FILES = (
     PUBLICATIONS_FILE,
@@ -56,6 +59,10 @@ JOURNAL_ABBREVIATIONS = {
     "etri journal": "ETRI Journal",
     "sensors": "Sensors",
     "electronics": "Electronics",
+}
+
+CONFERENCE_ABBREVIATIONS = {
+    "asiantestsymposium": "ATS",
 }
 
 MONTH_NAMES = [
@@ -143,6 +150,10 @@ def records_by_id(records: Iterable[dict[str, Any]]) -> dict[str, dict[str, Any]
 
 def normalize_text(value: Any) -> str:
     text = unicodedata.normalize("NFKD", str(value or "")).casefold()
+    # Drop accents but recompose Hangul so Korean titles survive the filter below.
+    text = unicodedata.normalize(
+        "NFC", "".join(ch for ch in text if not unicodedata.combining(ch))
+    )
     return re.sub(r"[^a-z0-9가-힣]+", "", text)
 
 
@@ -258,6 +269,80 @@ def publication_key(record: dict[str, Any], stage: str) -> str:
 
 def patent_key(record: dict[str, Any], scope: str) -> str:
     return f"patent:{scope}:{record['id']}:granted"
+
+
+def conference_key(year: int, conference: str) -> str:
+    return f"conference:{year}:{normalize_text(conference)}:presentation"
+
+
+def conference_label(record: dict[str, Any], year: int) -> str:
+    """Return the short label used in the title and body, e.g. ``ISOCC 2026``."""
+    explicit = str(record.get("conference_abbr") or "").strip()
+    if explicit:
+        return f"{explicit} {year}"
+
+    conference = " ".join(str(record.get("conference") or "").split())
+    parenthesized = re.findall(r"\(([^()]*)\)", conference)
+    if parenthesized:
+        label = parenthesized[-1].strip()
+        return label if str(year) in label else f"{label} {year}"
+
+    name = re.sub(rf"\s*{year}$", "", conference).strip()
+    abbreviation = CONFERENCE_ABBREVIATIONS.get(normalize_text(name))
+    return f"{abbreviation or name} {year}"
+
+
+def conference_end_date(value: Any) -> date | None:
+    parsed = parse_date_parts(value)
+    if not parsed:
+        return None
+    year, month, day = parsed
+    return date(year, month, day or calendar.monthrange(year, month)[1])
+
+
+def make_conference_news(
+    records: list[dict[str, Any]], fallback: date, existing_date: str | None = None
+) -> dict[str, Any]:
+    first = records[0]
+    year = int(first["year"])
+    label = conference_label(first, year)
+    abbreviation = label.rsplit(" ", 1)[0] if label.endswith(str(year)) else label
+    paper_phrase = "papers have" if len(records) > 1 else "paper has"
+    entries = [
+        f"Title: {str(record.get('title') or '').strip()}\n"
+        f"Authors: {', '.join(str(name).strip() for name in record.get('authors') or [])}"
+        for record in records
+    ]
+    body = (
+        f"The following {paper_phrase} been presented in {label}\n\n"
+        + "\n\n".join(entries)
+        + "\n\nCongratulations to the authors"
+    )
+    return common_news_fields(
+        source_key=conference_key(year, str(first.get("conference") or "")),
+        category="event",
+        post_date=existing_date or fallback.isoformat(),
+        title=f"{year} {abbreviation} Presentation",
+        body=body,
+        achievement_title=" / ".join(str(record.get("title") or "") for record in records),
+        authors=" / ".join(
+            ", ".join(str(name) for name in record.get("authors") or []) for record in records
+        ),
+    )
+
+
+def group_conference_records(
+    records: Iterable[dict[str, Any]],
+) -> dict[str, list[dict[str, Any]]]:
+    groups: dict[str, list[dict[str, Any]]] = {}
+    for record in records:
+        if record.get("type") != "international-conference" or not record.get("year"):
+            continue
+        key = conference_key(int(record["year"]), str(record.get("conference") or ""))
+        groups.setdefault(key, []).append(record)
+    for group in groups.values():
+        group.sort(key=lambda record: int(record.get("id") or 0))
+    return groups
 
 
 def common_news_fields(
@@ -401,13 +486,26 @@ def legacy_news_exists(news: Iterable[dict[str, Any]], desired: dict[str, Any]) 
     stage = "acceptance" if desired_key.endswith(":acceptance") else "publication"
     if desired.get("category") == "patent":
         stage = "patent"
+    if desired_key.startswith("conference:"):
+        # 같은 학회의 수동 발표 공지가 있으면 제목(예: 2023 ISOCC Presentation)으로 찾습니다.
+        heading = normalize_text(desired.get("title")).removesuffix("presentation")
+        return any(
+            item.get("category") == "event"
+            and normalize_text(item.get("title")).rstrip("s").removesuffix("presentation")
+            == heading
+            for item in news
+        )
 
     for item in news:
         if item.get("category") != desired.get("category"):
             continue
         item_title = normalize_text(item.get("paper_title"))
         item_body = normalize_text(item.get("body"))
-        if target != item_title and target not in item_body:
+        if stage == "patent":
+            # Patent titles are short and often prefixes of each other.
+            if target != item_title:
+                continue
+        elif target != item_title and target not in item_body:
             continue
         heading = str(item.get("title") or "").casefold()
         body = str(item.get("body") or "").casefold()
@@ -562,6 +660,31 @@ def main() -> int:
             if patent_ready(current) and (previous is None or not patent_ready(previous)):
                 candidates.append(make_patent_news(current, scope, names, fallback))
 
+    conferences = read_json(root / CONFERENCES_FILE)
+    if not isinstance(conferences, list):
+        raise TypeError(f"{CONFERENCES_FILE} must contain a JSON array")
+    for source_key, records in group_conference_records(conferences).items():
+        existing = by_source_key.get(source_key)
+        if existing:
+            updated += int(
+                update_generated_item(
+                    existing,
+                    make_conference_news(records, fallback, str(existing.get("date") or "")),
+                )
+            )
+            continue
+        held_on = max(
+            (held for held in map(lambda r: conference_end_date(r.get("date")), records) if held),
+            default=None,
+        )
+        if held_on is None or (fallback - held_on).days > RECENT_CONFERENCE_DAYS:
+            continue
+        if held_on > fallback:
+            waiting += 1
+            print(f"[대기] {source_key} — 학회 개최일({held_on}) 이후에 게시합니다.")
+            continue
+        candidates.append(make_conference_news(records, fallback))
+
     new_items: list[dict[str, Any]] = []
     seen_keys = set(by_source_key)
     for desired in candidates:
@@ -592,7 +715,7 @@ def main() -> int:
     print(f"- 새 게시글: {len(new_items)}")
     print(f"- 자동 게시글 갱신: {updated}")
     print(f"- 기존 수동 게시글 중복 생략: {skipped_legacy}")
-    print(f"- Publication 정보 대기: {waiting}")
+    print(f"- 게시 대기(게재 정보 미완성·학회 개최 전): {waiting}")
     print(f"- news.json 변경: {'예' if changed else '아니요'}")
     if arguments.dry_run:
         print("- 시험 실행: 파일을 수정하지 않았습니다.")
