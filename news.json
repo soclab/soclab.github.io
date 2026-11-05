@@ -6906,5 +6906,22 @@
   "auto_generated": true,
   "source_key": "patent:domestic:143:granted",
   "id": 1274
+ },
+ {
+  "board": "research",
+  "category": "event",
+  "date": "2026-11-04",
+  "title": "2026 ISOCC Presentation",
+  "body": "The following papers have been presented in ISOCC 2026\n\nTitle: High-speed Address Generator Utilizing Ring-based Architecture for Memory Testing\nAuthors: Duyeon Won, Juyong Lee, Seung Ho Shin, Gyeonggyu Park, Sungho Kang\n\nTitle: Low-Overhead Partial Enhanced Scan for Transition Delay Fault Testing\nAuthors: Jaehyun Kim, Dahoon Kim, Hoyeon We, Sungho Kang\n\nTitle: STAG: Systolic-Array Trajectory Authentication Guard for Secure AI Accelerator Test\nAuthors: Dayoung Kim, Sooryeong Lee, Seungtae Kim, Nuri Son, Sungho Kang\n\nCongratulations to the authors",
+  "body_html": "The following papers have been presented in ISOCC 2026\n\nTitle: High-speed Address Generator Utilizing Ring-based Architecture for Memory Testing\nAuthors: Duyeon Won, Juyong Lee, Seung Ho Shin, Gyeonggyu Park, Sungho Kang\n\nTitle: Low-Overhead Partial Enhanced Scan for Transition Delay Fault Testing\nAuthors: Jaehyun Kim, Dahoon Kim, Hoyeon We, Sungho Kang\n\nTitle: STAG: Systolic-Array Trajectory Authentication Guard for Secure AI Accelerator Test\nAuthors: Dayoung Kim, Sooryeong Lee, Seungtae Kim, Nuri Son, Sungho Kang\n\nCongratulations to the authors",
+  "images": [],
+  "views": 0,
+  "pinned": false,
+  "paper_title": "High-speed Address Generator Utilizing Ring-based Architecture for Memory Testing / Low-Overhead Partial Enhanced Scan for Transition Delay Fault Testing / STAG: Systolic-Array Trajectory Authentication Guard for Secure AI Accelerator Test",
+  "authors": "Duyeon Won, Juyong Lee, Seung Ho Shin, Gyeonggyu Park, Sungho Kang / Jaehyun Kim, Dahoon Kim, Hoyeon We, Sungho Kang / Dayoung Kim, Sooryeong Lee, Seungtae Kim, Nuri Son, Sungho Kang",
+  "attachments": [],
+  "auto_generated": true,
+  "source_key": "conference:2026:internationalsocdesignconferenceisocc2026:presentation",
+  "id": 1275
  }
 ]
