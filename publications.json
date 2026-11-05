@@ -1,4 +1,26 @@
 [
+    {
+    "id": 241,
+    "type": "international-journal",
+    "status": "accepted",
+    "year": 2026,
+    "month": null,
+    "title": "FORT-PIM: Field-Oriented Runtime Tri-Stage Protection for Floating-Point Digital PIM",
+    "authors": [
+      "Seung Ho Shin",
+      "Youngki Moon",
+      "Yeonho Choi",
+      "Nuri Son",
+      "Sungho Kang"
+    ],
+    "journal": "IEEE Transactions on Circuits and Systems I: Regular Papers",
+    "volume": "",
+    "issue": "",
+    "pages": "",
+    "date": "",
+    "doi": "",
+    "url": ""
+  },
   {
     "id": 240,
     "type": "international-journal",
