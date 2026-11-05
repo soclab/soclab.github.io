@@ -6923,5 +6923,22 @@
   "auto_generated": true,
   "source_key": "conference:2026:internationalsocdesignconferenceisocc2026:presentation",
   "id": 1275
+ },
+ {
+  "board": "research",
+  "category": "publication",
+  "date": "2026-11-05",
+  "title": "2026 IEEE TCASI Acceptance - Seung Ho Shin, etc.",
+  "body": "The following paper has been accepted in the IEEE Transactions on Circuits and Systems I: Regular Papers in November 2026.\nCongratulations to the authors.\n\nTitle: FORT-PIM: Field-Oriented Runtime Tri-Stage Protection for Floating-Point Digital PIM\nAuthors: Seung Ho Shin, Youngki Moon, Yeonho Choi, Nuri Son, and Sungho Kang",
+  "body_html": "The following paper has been accepted in the IEEE Transactions on Circuits and Systems I: Regular Papers in November 2026.\nCongratulations to the authors.\n\nTitle: FORT-PIM: Field-Oriented Runtime Tri-Stage Protection for Floating-Point Digital PIM\nAuthors: Seung Ho Shin, Youngki Moon, Yeonho Choi, Nuri Son, and Sungho Kang",
+  "images": [],
+  "views": 0,
+  "pinned": false,
+  "paper_title": "FORT-PIM: Field-Oriented Runtime Tri-Stage Protection for Floating-Point Digital PIM",
+  "authors": "Seung Ho Shin, Youngki Moon, Yeonho Choi, Nuri Son, and Sungho Kang",
+  "attachments": [],
+  "auto_generated": true,
+  "source_key": "publication:241:acceptance",
+  "id": 1276
  }
 ]
