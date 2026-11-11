@@ -539,7 +539,8 @@
         "2002~2004 : Senior Researcher in Hynix Semiconductor INC.",
         "2004~2005 : Research professor in Yonsei University",
         "2005~현재 : Professor in Kyungpook National University"
-      ]
+      ],
+      "연구기간": "2004.03-2005.02"
     }
   },
   {
@@ -548,7 +549,7 @@
     "category": "연구교수",
     "name_kr": "홍성관",
     "name_en": "Seonggwan Hong",
-    "display_order": 2,
+    "display_order": 5,
     "work": "한양대학교 교수",
     "profile": {
       "학력": [
@@ -561,7 +562,8 @@
         "1999~2007 : CIO, Vice president, 하이닉스",
         "2007~2009.6 : R&D, Vice president, 하이닉스",
         "2009.6~2013 : 연세대, 하이닉스 Chair professor, BK21"
-      ]
+      ],
+      "연구기간": "2012.07-2013.02"
     }
   },
   {
@@ -570,7 +572,7 @@
     "category": "연구교수",
     "name_kr": "박은세",
     "name_en": "Eunse Park",
-    "display_order": 3,
+    "display_order": 2,
     "work": "NVIDIA",
     "profile": {
       "학력": [
@@ -585,7 +587,8 @@
         "1999~2002 : (주) 베라테스트 대표이사",
         "2002~2005 : Director of Product Engineering, Magma Design Automation, Inc., CA",
         "2005~2006 : Independent consultant to Magma Design Automation"
-      ]
+      ],
+      "연구기간": "2006.10-2008.09"
     }
   },
   {
@@ -593,7 +596,7 @@
     "group": "alumni",
     "category": "연구교수",
     "name_en": "Alok Barua",
-    "display_order": 4,
+    "display_order": 3,
     "work": "Indian Institute of Technology, Kharagpur",
     "profile": {
       "학력": [
@@ -603,7 +606,8 @@
       "경력": [
         "1999~2004 : Indian Institute of Technology 부교수",
         "2004~2007 : Indian Institute of Technology 교수"
-      ]
+      ],
+      "연구기간": "2007.04-2007.12"
     },
     "private_detail_obfuscated": "v2.UBPlE5TSWsTQJZcpsoTawCAgbpzDkZ0BVos8swPpPgz6qHdxmAcCThK47C0LEPdvBxBbasXMGi4"
   },
@@ -2238,5 +2242,19 @@
     "graduation": "2016.08",
     "work": "SK hynix",
     "private_detail_obfuscated": "v2.D5HBg-OpjMZW59jI6w_k-Ot2zv49alhDd_5vGXNqeQ"
+  },
+  {
+    "id": "6729",
+    "group": "alumni",
+    "category": "연구교수",
+    "name_kr": "김홍식",
+    "name_en": "Hongsik Kim",
+    "photo": "images/members/Hongsik_Kim.jpg",
+    "display_order": 4,
+    "work": "Toshiba (San Jose)",
+    "profile": {
+      "연구기간": "2007.04-2010.08"
+    },
+    "private_detail_obfuscated": "v2.9Lr5LM2NZM4HMBZsYvlWC4L3sA8lG5SGEhsx4S7rsQ2W_ohV0cp0z9WWR0N9k61o4wmNFCwedyGO"
   }
 ]

@@ -438,6 +438,8 @@ function createCurrentMemberName(member, className) {
   name.className = className + " member-bilingual-name";
   const koreanName = String(member.name_kr || "").trim();
   const englishName = String(member.name_en || "").trim();
+  // 한글 이름이 없으면 영문 이름을 한글 이름과 같은 크기·굵기로 보여 줍니다.
+  name.classList.toggle("is-english-only", !koreanName);
 
   if (koreanName) {
     const korean = document.createElement("span");
@@ -1122,6 +1124,7 @@ function populateAlumniDetail(detail, member) {
       affiliationValue
     ),
     createAlumniThesisField(member),
+    createProfileField("연구기간", "Research Period", member.profile?.["연구기간"]),
     createEmailField(privateDetail.email),
     createProfileListField("학력", "Academic Ability", member.profile?.["학력"]),
     createProfileListField("경력", "Work Experience", member.profile?.["경력"]),

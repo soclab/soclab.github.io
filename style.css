@@ -2322,6 +2322,14 @@ html[lang="en"] .member-name-korean{
   display:none;
 }
 
+.member-bilingual-name.is-english-only .member-name-english{
+  margin-top:0;
+  color:var(--ink);
+  font-size:inherit;
+  font-weight:600;
+  line-height:1.4;
+}
+
 html[lang="en"] .member-name-english{
   margin-top:0;
   color:var(--ink);
