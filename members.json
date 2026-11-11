@@ -528,7 +528,7 @@
     "name_en": "Byeongin Mun",
     "photo": "images/members/Byeongin_Mun.jpg",
     "display_order": 1,
-    "work": "경북대학교",
+    "work": "Kyungpook National University",
     "profile": {
       "학력": [
         "연세대학교 (학사, 1995)",
@@ -536,9 +536,9 @@
         "연세대학교 (박사, 2002)"
       ],
       "경력": [
-        "2002~2004 : Senior Researcher in Hynix Semiconductor INC.",
-        "2004~2005 : Research professor in Yonsei University",
-        "2005~현재 : Professor in Kyungpook National University"
+        "2002-2004 : Senior Researcher in Hynix Semiconductor INC.",
+        "2004-2005 : Research professor in Yonsei University",
+        "2005-현재 : Professor in Kyungpook National University"
       ],
       "연구기간": "2004.03-2005.02"
     }
@@ -550,18 +550,18 @@
     "name_kr": "홍성관",
     "name_en": "Seonggwan Hong",
     "display_order": 5,
-    "work": "한양대학교 교수",
+    "work": "Hanyang University",
     "profile": {
       "학력": [
         "한양대학교 (학사, 1980)",
         "Georgia Institute of Technology (석박사, 1990)"
       ],
       "경력": [
-        "1990~1995 : Senior Member of Technical Staff, Cadence Design Systems Inc., USA",
-        "1995~1999 : Research Fellow (Executive), LG Semicon",
-        "1999~2007 : CIO, Vice president, 하이닉스",
-        "2007~2009.6 : R&D, Vice president, 하이닉스",
-        "2009.6~2013 : 연세대, 하이닉스 Chair professor, BK21"
+        "1990-1995 : Senior Member of Technical Staff, Cadence Design Systems Inc., USA",
+        "1995-1999 : Research Fellow (Executive), LG Semicon",
+        "1999-2007 : CIO, Vice president, 하이닉스",
+        "2007-2009 : R&D, Vice president, 하이닉스",
+        "2009-2013 : 연세대, 하이닉스 Chair professor, BK21"
       ],
       "연구기간": "2012.07-2013.02"
     }
@@ -581,12 +581,12 @@
         "The University of Texas (박사, 1989)"
       ],
       "경력": [
-        "1990~1991 : 모토로라 연구원, Austin, Texas, USA",
-        "1992~1995 : 한국전자통신연구원 책임연구원",
-        "1995~2000 : 한양대학교 전자공학과 부교수",
-        "1999~2002 : (주) 베라테스트 대표이사",
-        "2002~2005 : Director of Product Engineering, Magma Design Automation, Inc., CA",
-        "2005~2006 : Independent consultant to Magma Design Automation"
+        "1990-1991 : 모토로라 연구원, Austin, Texas, USA",
+        "1992-1995 : 한국전자통신연구원 책임연구원",
+        "1995-2000 : 한양대학교 전자공학과 부교수",
+        "1999-2002 : (주) 베라테스트 대표이사",
+        "2002-2005 : Director of Product Engineering, Magma Design Automation, Inc., CA",
+        "2005-2006 : Independent consultant to Magma Design Automation"
       ],
       "연구기간": "2006.10-2008.09"
     }
@@ -604,8 +604,8 @@
         "Indian Institute of Technology Jadavpur University (박사, 1982)"
       ],
       "경력": [
-        "1999~2004 : Indian Institute of Technology 부교수",
-        "2004~2007 : Indian Institute of Technology 교수"
+        "1999-2004 : Indian Institute of Technology 부교수",
+        "2004-2007 : Indian Institute of Technology 교수"
       ],
       "연구기간": "2007.04-2007.12"
     },
@@ -2261,8 +2261,8 @@
       ],
       "경력": [
         "2005 : Postdoctoral Fellow, Virginia Tech, USA",
-        "2006~2007 : Senior Engineer, System LSI, Samsung Electronics",
-        "2007~2010 : Research Professor, Yonsei University"
+        "2006-2007 : Senior Engineer, System LSI, Samsung Electronics",
+        "2007-2010 : Research Professor, Yonsei University"
       ]
     },
     "private_detail_obfuscated": "v2.9Lr5LM2NZM4HMBZsYvlWC4L3sA8lG5SGEhsx4S7rsQ2W_ohV0cp0z9WWR0N9k61o4wmNFCwedyGO"
