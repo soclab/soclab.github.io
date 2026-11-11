@@ -1190,6 +1190,14 @@ function createAlumniElements(member, index) {
     button.append(graduation);
   }
 
+  const periodValue = String(member.profile?.["연구기간"] || "").trim();
+  if (periodValue) {
+    const period = document.createElement("span");
+    period.className = "alumni-card-graduation";
+    period.textContent = periodValue;
+    button.append(period);
+  }
+
   const affiliationValue = String(member.work || "").trim();
   const affiliation = document.createElement("span");
   affiliation.className = "alumni-card-affiliation";
