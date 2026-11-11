@@ -191,6 +191,13 @@ def normalized_text(value: Any) -> str:
     return "" if value is None else str(value).strip()
 
 
+def email_text(value: Any) -> str:
+    """Return one or more email addresses as a single comma-separated string."""
+    if isinstance(value, list):
+        return ", ".join(normalized_text(item) for item in value if normalized_text(item))
+    return normalized_text(value)
+
+
 def create_stable_member_id(member: dict[str, Any], index: int) -> str:
     existing_id = member.get("id")
     if existing_id not in (None, ""):
@@ -471,8 +478,11 @@ def validate_source_members(members: list[dict[str, Any]]) -> list[str]:
         ):
             errors.append(f"{label}: 이름이 없습니다.")
 
-        email = normalized_text(member.get("email"))
-        if email and EMAIL_PATTERN.fullmatch(email) is None:
+        email = email_text(member.get("email"))
+        if email and any(
+            EMAIL_PATTERN.fullmatch(address.strip()) is None
+            for address in email.split(",")
+        ):
             errors.append(f"{label}: 이메일 형식이 올바르지 않습니다.")
 
         display_order = member.get("display_order")
@@ -503,9 +513,9 @@ def build_public_members(members: list[dict[str, Any]]) -> list[dict[str, Any]]:
         public_member["id"] = str(member["id"])
 
         private_detail = {
-            key: normalized_text(member.get(key))
+            key: email_text(member.get(key)) if key == "email" else normalized_text(member.get(key))
             for key in ("email", "hobby")
-            if normalized_text(member.get(key))
+            if email_text(member.get(key))
         }
         if private_detail:
             public_member["private_detail_obfuscated"] = encode_private_detail(

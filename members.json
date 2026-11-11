@@ -527,7 +527,20 @@
     "name_kr": "문병인",
     "name_en": "Byeongin Mun",
     "photo": "images/members/Byeongin_Mun.jpg",
-    "work": "경북대학교"
+    "display_order": 1,
+    "work": "경북대학교",
+    "profile": {
+      "학력": [
+        "연세대학교 (학사, 1995)",
+        "연세대학교 (석사, 1997)",
+        "연세대학교 (박사, 2002)"
+      ],
+      "경력": [
+        "2002~2004 : Senior Researcher in Hynix Semiconductor INC.",
+        "2004~2005 : Research professor in Yonsei University",
+        "2005~현재 : Professor in Kyungpook National University"
+      ]
+    }
   },
   {
     "id": "727",
@@ -535,8 +548,21 @@
     "category": "연구교수",
     "name_kr": "홍성관",
     "name_en": "Seonggwan Hong",
-    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4JsgFgO1868XgbFFHhz8iYeDx_v9kfwxrtcnJTRVEAJJQyitA",
-    "work": "한양대학교 교수"
+    "display_order": 2,
+    "work": "한양대학교 교수",
+    "profile": {
+      "학력": [
+        "한양대학교 (학사, 1980)",
+        "Georgia Institute of Technology (석박사, 1990)"
+      ],
+      "경력": [
+        "1990~1995 : Senior Member of Technical Staff, Cadence Design Systems Inc., USA",
+        "1995~1999 : Research Fellow (Executive), LG Semicon",
+        "1999~2007 : CIO, Vice president, 하이닉스",
+        "2007~2009.6 : R&D, Vice president, 하이닉스",
+        "2009.6~2013 : 연세대, 하이닉스 Chair professor, BK21"
+      ]
+    }
   },
   {
     "id": "739",
@@ -544,14 +570,42 @@
     "category": "연구교수",
     "name_kr": "박은세",
     "name_en": "Eunse Park",
-    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4JsgFgO1868XgbFFHhz8iYeDx_v9kfwxrtcnJTRVEAJJQyitA"
+    "display_order": 3,
+    "work": "NVIDIA",
+    "profile": {
+      "학력": [
+        "서울대학교 (학사, 1980)",
+        "한국과학기술원 (석사, 1982)",
+        "The University of Texas (박사, 1989)"
+      ],
+      "경력": [
+        "1990~1991 : 모토로라 연구원, Austin, Texas, USA",
+        "1992~1995 : 한국전자통신연구원 책임연구원",
+        "1995~2000 : 한양대학교 전자공학과 부교수",
+        "1999~2002 : (주) 베라테스트 대표이사",
+        "2002~2005 : Director of Product Engineering, Magma Design Automation, Inc., CA",
+        "2005~2006 : Independent consultant to Magma Design Automation"
+      ]
+    }
   },
   {
     "id": "741",
     "group": "alumni",
     "category": "연구교수",
     "name_en": "Alok Barua",
-    "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4JsgFgO1868XgbFFHhz8iYeDx_v9kfwxrtcnJTRVEAJJQyitA"
+    "display_order": 4,
+    "work": "Indian Institute of Technology, Kharagpur",
+    "profile": {
+      "학력": [
+        "Jadavpur University (석사, 1980)",
+        "Indian Institute of Technology Jadavpur University (박사, 1982)"
+      ],
+      "경력": [
+        "1999~2004 : Indian Institute of Technology 부교수",
+        "2004~2007 : Indian Institute of Technology 교수"
+      ]
+    },
+    "private_detail_obfuscated": "v2.UBPlE5TSWsTQJZcpsoTawCAgbpzDkZ0BVos8swPpPgz6qHdxmAcCThK47C0LEPdvBxBbasXMGi4"
   },
   {
     "id": "786",

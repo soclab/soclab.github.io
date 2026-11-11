@@ -2408,6 +2408,14 @@ html[lang="en"] .member-detail-name .member-name-english{
   overflow-wrap:anywhere;
 }
 
+.member-profile-line{
+  display:block;
+}
+
+.member-profile-line + .member-profile-line{
+  margin-top:2px;
+}
+
 .member-profile-field a{
   color:var(--copper);
   border-bottom:1px solid var(--line-mid);
@@ -2672,13 +2680,17 @@ html[lang="en"] .alumni-card-name .member-name-english{
 }
 
 .alumni-card-affiliation{
-  display:block;
+  display:-webkit-box;
   margin-top:12px;
   min-height:1.55em;
+  overflow:hidden;
   color:var(--ink-soft);
   font-size:12px;
   line-height:1.55;
   overflow-wrap:anywhere;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  line-clamp:2;
 }
 
 .alumni-card-graduation + .alumni-card-affiliation{
@@ -2692,6 +2704,10 @@ html[lang="en"] .alumni-card-name .member-name-english{
 
 .alumni-detail-panel{
   grid-column:1/-1;
+}
+
+.alumni-detail-panel.has-no-photo{
+  grid-template-columns:minmax(0,1fr);
 }
 
 .compact-section{

@@ -37,10 +37,10 @@ private-data/members.source.json  ->  build-members.bat  ->  members.json
 | `photo` | `images/members/...` 형식의 공개 사진 경로입니다. |
 | `display_order` | 같은 과정 안에서의 표시 순서입니다. 1부터 시작합니다. |
 | `research_interests` | 현재 구성원 카드의 연구 분야입니다. |
-| `email` | 비공개 원본에서만 사용하는 이메일입니다. |
+| `email` | 비공개 원본에서만 사용하는 이메일입니다. 여러 개면 `["a@x.com", "b@y.com"]`처럼 배열로 씁니다. |
 | `hobby` | 프로필을 열었을 때 표시할 취미입니다. 이메일과 함께 난독화됩니다. |
 | `graduation`, `thesis`, `work` | 동문의 졸업 시점, 학위논문, 현재 재직처입니다. |
-| `profile` | 지도교수의 학력·경력·수상 등 상세 정보입니다. |
+| `profile` | 지도교수의 학력·경력·수상 등 상세 정보입니다. 동문 연구교수는 `학력`, `경력`을 사용합니다. |
 
 ## 이메일 처리 방식
 

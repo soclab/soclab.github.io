@@ -338,6 +338,7 @@ function getMemberCategoryLabels(category) {
     "석사과정": { kr: "석사과정", en: "M.S. Program" },
     "인턴": { kr: "학부인턴", en: "Undergraduate Intern" },
     "사무원": { kr: "사무원", en: "Administrative Staff" },
+    "연구교수": { kr: "연구교수", en: "Research Professor" },
     "박사": { kr: "박사", en: "Ph.D." },
     "석사": { kr: "석사", en: "M.S." },
   };
@@ -1041,13 +1042,71 @@ function decodeMemberPrivateDetail(member) {
   }
 }
 
+function createProfileListField(labelKr, labelEn, values) {
+  const lines = (Array.isArray(values) ? values : [values])
+    .map((value) => String(value || "").trim())
+    .filter(Boolean);
+  if (lines.length === 0) {
+    return null;
+  }
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "member-profile-field";
+  const term = document.createElement("dt");
+  setLocalizedContent(term, labelKr, labelEn);
+  const description = document.createElement("dd");
+  lines.forEach((line) => {
+    const item = document.createElement("span");
+    item.className = "member-profile-line";
+    item.textContent = line;
+    description.append(item);
+  });
+
+  wrapper.append(term, description);
+  return wrapper;
+}
+
+function createEmailField(value) {
+  const addresses = String(value || "")
+    .split(",")
+    .map((address) => address.trim())
+    .filter(Boolean);
+  if (addresses.length === 0) {
+    return null;
+  }
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "member-profile-field";
+  const term = document.createElement("dt");
+  setLocalizedContent(term, "메일", "Email");
+  const description = document.createElement("dd");
+  addresses.forEach((address) => {
+    const line = document.createElement("span");
+    line.className = "member-profile-line";
+    const link = document.createElement("a");
+    link.href = "mailto:" + address;
+    link.textContent = address;
+    line.append(link);
+    description.append(line);
+  });
+
+  wrapper.append(term, description);
+  return wrapper;
+}
+
 function populateAlumniDetail(detail, member) {
   const privateDetail = decodeMemberPrivateDetail(member);
   const affiliationValue = String(member.work || "").trim();
-  const photo = createMemberPhoto(
-    member,
-    "member-detail-photo alumni-detail-photo"
-  );
+  // 사진이 없거나 불러오지 못하면 사진 자리 없이 글만 보여 줍니다.
+  const hasPhoto = Boolean(String(member.photo || "").trim());
+  const photo = hasPhoto
+    ? createMemberPhoto(member, "member-detail-photo alumni-detail-photo")
+    : null;
+  detail.classList.toggle("has-no-photo", !hasPhoto);
+  photo?.querySelector("img")?.addEventListener("error", () => {
+    photo.remove();
+    detail.classList.add("has-no-photo");
+  });
   const content = document.createElement("div");
   content.className = "member-detail-content";
   const name = createCurrentMemberName(member, "member-detail-name");
@@ -1063,12 +1122,14 @@ function populateAlumniDetail(detail, member) {
       affiliationValue
     ),
     createAlumniThesisField(member),
-    createProfileField("메일", "Email", privateDetail.email, "mailto:"),
+    createEmailField(privateDetail.email),
+    createProfileListField("학력", "Academic Ability", member.profile?.["학력"]),
+    createProfileListField("경력", "Work Experience", member.profile?.["경력"]),
     createProfileField("취미", "Hobby", privateDetail.hobby),
   ].filter(Boolean).forEach((field) => fields.append(field));
 
   content.append(name, fields);
-  detail.replaceChildren(photo, content);
+  detail.replaceChildren(...[photo, content].filter(Boolean));
 }
 
 function clearAlumniDetail(detail) {
@@ -1129,6 +1190,7 @@ function createAlumniElements(member, index) {
   const affiliationValue = String(member.work || "").trim();
   const affiliation = document.createElement("span");
   affiliation.className = "alumni-card-affiliation";
+  affiliation.title = affiliationValue;
   setLocalizedContent(affiliation, affiliationValue, affiliationValue);
   button.append(affiliation);
   card.append(button);
@@ -1174,7 +1236,7 @@ function createAlumniDegreeSection(category, alumni) {
   const cards = document.createDocumentFragment();
   const details = document.createDocumentFragment();
   alumni.forEach((member, index) => {
-    const categoryKey = category === "박사" ? "phd" : "ms";
+    const categoryKey = { "연구교수": "rp", "박사": "phd" }[category] || "ms";
     const elements = createAlumniElements(
       member,
       categoryKey + "-" + String(index)
@@ -1199,8 +1261,15 @@ function renderAlumni(members) {
     (member) =>
       member &&
       member.group === "alumni" &&
-      ["박사", "석사"].includes(member.category)
+      ["연구교수", "박사", "석사"].includes(member.category)
   );
+  const researchProfessors = alumni
+    .filter((member) => member.category === "연구교수")
+    .sort(
+      (first, second) =>
+        (Number(first.display_order) || Infinity) -
+        (Number(second.display_order) || Infinity)
+    );
   const doctoralAlumni = alumni
     .filter((member) => member.category === "박사")
     .sort(compareAlumniByGraduation);
@@ -1209,6 +1278,7 @@ function renderAlumni(members) {
     .sort(compareAlumniByGraduation);
   setLocalizedContent(total, "총 " + alumni.length + "명", alumni.length + " alumni");
   container.replaceChildren(
+    createAlumniDegreeSection("연구교수", researchProfessors),
     createAlumniDegreeSection("박사", doctoralAlumni),
     createAlumniDegreeSection("석사", mastersAlumni)
   );
