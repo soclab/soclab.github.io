@@ -2253,8 +2253,30 @@
     "display_order": 4,
     "work": "Toshiba (San Jose)",
     "profile": {
-      "연구기간": "2007.04-2010.08"
+      "연구기간": "2007.04-2010.08",
+      "학력": [
+        "연세대학교 (학사, 1997)",
+        "연세대학교 (석사, 1999)",
+        "연세대학교 (박사, 2004)"
+      ],
+      "경력": [
+        "2005 : Postdoctoral Fellow, Virginia Tech, USA",
+        "2006~2007 : Senior Engineer, System LSI, Samsung Electronics",
+        "2007~2010 : Research Professor, Yonsei University"
+      ]
     },
     "private_detail_obfuscated": "v2.9Lr5LM2NZM4HMBZsYvlWC4L3sA8lG5SGEhsx4S7rsQ2W_ohV0cp0z9WWR0N9k61o4wmNFCwedyGO"
+  },
+  {
+    "id": "6730",
+    "group": "alumni",
+    "category": "박사",
+    "name_kr": "윤효준",
+    "name_en": "Hyojun Yun",
+    "photo": "images/members/Hyojun_Yun.jpg",
+    "graduation": "2026.08",
+    "thesis": "A Scan Architecture for Obtaining Reliability in Circuit using Data Duplication",
+    "work": "Post doctoral researcher",
+    "private_detail_obfuscated": "v2.jDlC8xa9cjZHu6_7662Wt65LT1NEqBRhFrkW8hdDx_HIQuh3aX-d-5cCJ9YEMTTSiDMxwjVFO1IkdA_sRmY"
   }
 ]

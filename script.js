@@ -1116,6 +1116,7 @@ function populateAlumniDetail(detail, member) {
   fields.className = "member-profile-fields";
 
   [
+    createProfileField("연구기간", "Research Period", member.profile?.["연구기간"]),
     createProfileField(
       "재직처",
       "Affiliation",
@@ -1124,7 +1125,6 @@ function populateAlumniDetail(detail, member) {
       affiliationValue
     ),
     createAlumniThesisField(member),
-    createProfileField("연구기간", "Research Period", member.profile?.["연구기간"]),
     createEmailField(privateDetail.email),
     createProfileListField("학력", "Academic Ability", member.profile?.["학력"]),
     createProfileListField("경력", "Work Experience", member.profile?.["경력"]),
