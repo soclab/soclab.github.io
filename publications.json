@@ -1,5 +1,5 @@
 [
-    {
+  {
     "id": 241,
     "type": "international-journal",
     "status": "accepted",
@@ -18,8 +18,8 @@
     "issue": "",
     "pages": "",
     "date": "",
-    "doi": "",
-    "url": ""
+    "doi": "10.1109/tcsi.2026.3751757",
+    "url": "https://doi.org/10.1109/tcsi.2026.3751757"
   },
   {
     "id": 240,
