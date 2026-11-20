@@ -1,5 +1,28 @@
 [
-  {
+    {
+    "id": 242,
+    "type": "international-journal",
+    "status": "accepted",
+    "year": 2026,
+    "month": null,
+    "title": "ORBIT: A High-Speed One-Hot Rotating Bit-Token ALPG for Memory Testing",
+    "authors": [
+      "Duyeon Won",
+      "Juyong Lee",
+      "Seung Ho Shin",
+      "Gyeonggyu Park",
+      "Youngki Moon",
+      "Sungho Kang"
+    ],
+    "journal": "IEEE Transactions on Very Large Scale Integration Systems",
+    "volume": "",
+    "issue": "",
+    "pages": "",
+    "date": "",
+    "doi": "",
+    "url": ""
+  },
+    {
     "id": 241,
     "type": "international-journal",
     "status": "accepted",
@@ -18,8 +41,8 @@
     "issue": "",
     "pages": "",
     "date": "",
-    "doi": "10.1109/tcsi.2026.3751757",
-    "url": "https://doi.org/10.1109/tcsi.2026.3751757"
+    "doi": "",
+    "url": ""
   },
   {
     "id": 240,
