@@ -6948,5 +6948,22 @@
   "auto_generated": true,
   "source_key": "publication:241:acceptance",
   "id": 1276
+ },
+ {
+  "board": "research",
+  "category": "publication",
+  "date": "2026-11-20",
+  "title": "2026 IEEE TVLSI Acceptance - Duyeon Won, etc.",
+  "body": "The following paper has been accepted in the IEEE Transactions on Very Large Scale Integration Systems in November 2026.\nCongratulations to the authors.\n\nTitle: ORBIT: A High-Speed One-Hot Rotating Bit-Token ALPG for Memory Testing\nAuthors: Duyeon Won, Juyong Lee, Seung Ho Shin, Gyeonggyu Park, Youngki Moon, and Sungho Kang",
+  "body_html": "The following paper has been accepted in the IEEE Transactions on Very Large Scale Integration Systems in November 2026.\nCongratulations to the authors.\n\nTitle: ORBIT: A High-Speed One-Hot Rotating Bit-Token ALPG for Memory Testing\nAuthors: Duyeon Won, Juyong Lee, Seung Ho Shin, Gyeonggyu Park, Youngki Moon, and Sungho Kang",
+  "images": [],
+  "views": 0,
+  "pinned": false,
+  "paper_title": "ORBIT: A High-Speed One-Hot Rotating Bit-Token ALPG for Memory Testing",
+  "authors": "Duyeon Won, Juyong Lee, Seung Ho Shin, Gyeonggyu Park, Youngki Moon, and Sungho Kang",
+  "attachments": [],
+  "auto_generated": true,
+  "source_key": "publication:242:acceptance",
+  "id": 1277
  }
 ]
